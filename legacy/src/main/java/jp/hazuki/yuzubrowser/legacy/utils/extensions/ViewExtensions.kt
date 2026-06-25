@@ -178,7 +178,7 @@ private suspend fun onDownload(
             .setContentTitle(name)
             .setContentText(context.getText(R.string.download_success))
             .setSmallIcon(android.R.drawable.stat_sys_download_done)
-            .setContentIntent(PendingIntent.getActivity(context.applicationContext, 0, info.createFileOpenIntent(context, downloadedFile), 0))
+            .setContentIntent(PendingIntent.getActivity(context.applicationContext, 0, info.createFileOpenIntent(context, downloadedFile), PendingIntent.FLAG_IMMUTABLE))
             .build()
 
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager

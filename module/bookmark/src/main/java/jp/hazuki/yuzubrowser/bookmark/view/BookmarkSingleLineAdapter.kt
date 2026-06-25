@@ -19,7 +19,7 @@ package jp.hazuki.yuzubrowser.bookmark.view
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import jp.hazuki.bookmark.R
+import jp.hazuki.yuzubrowser.bookmark.R
 import jp.hazuki.yuzubrowser.bookmark.item.BookmarkItem
 import jp.hazuki.yuzubrowser.favicon.FaviconManager
 

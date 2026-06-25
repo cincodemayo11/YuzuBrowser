@@ -50,7 +50,7 @@ class ActivityListActivity : ThemeActivity() {
             try {
                 val activity = activity ?: return
                 val activities = activity.packageManager.getPackageInfo(activity.packageName, PackageManager.GET_ACTIVITIES).activities
-                listAdapter = object : ArrayAdapter<ActivityInfo>(activity, 0, activities) {
+                listAdapter = object : ArrayAdapter<ActivityInfo>(activity, android.R.layout.simple_list_item_1, activities ?: emptyArray()){
                     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
                         val view = convertView ?: LayoutInflater.from(activity).inflate(android.R.layout.simple_list_item_1, parent, false)
 

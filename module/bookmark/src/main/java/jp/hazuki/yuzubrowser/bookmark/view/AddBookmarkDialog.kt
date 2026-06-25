@@ -26,7 +26,7 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import jp.hazuki.bookmark.R
+import jp.hazuki.yuzubrowser.bookmark.R
 import jp.hazuki.yuzubrowser.bookmark.item.BookmarkFolder
 import jp.hazuki.yuzubrowser.bookmark.item.BookmarkItem
 import jp.hazuki.yuzubrowser.bookmark.repository.BookmarkManager

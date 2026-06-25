@@ -25,6 +25,10 @@ import android.view.ViewGroup.LayoutParams
 import android.view.WindowManager
 import android.webkit.WebChromeClient
 import android.widget.FrameLayout
+import android.content.pm.ActivityInfo
+import android.os.Build
+import android.view.WindowInsets
+import android.view.WindowInsetsController
 
 class WebCustomViewHandler(private val fullscreenLayout: ViewGroup) {
     private var customView: View? = null
@@ -43,11 +47,20 @@ class WebCustomViewHandler(private val fullscreenLayout: ViewGroup) {
         }
 
         oldOrientation = activity.requestedOrientation
-        activity.requestedOrientation = orientation
+        activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
 
         val window = activity.window
         oldUiVisibility = window.decorView.systemUiVisibility
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.let {
+                it.hide(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
+                it.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            }
+        } else {
+            @Suppress("DEPRECATION")
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or
+            View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN
+        }
 
         val windowParams = window.attributes
         oldFlag = windowParams.flags
@@ -71,7 +84,12 @@ class WebCustomViewHandler(private val fullscreenLayout: ViewGroup) {
         activity.requestedOrientation = oldOrientation
 
         val window = activity.window
-        window.decorView.systemUiVisibility = oldUiVisibility
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.show(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
+        } else {
+            @Suppress("DEPRECATION")
+            window.decorView.systemUiVisibility = oldUiVisibility
+        }
 
         val windowParams = window.attributes
         windowParams.flags = oldFlag

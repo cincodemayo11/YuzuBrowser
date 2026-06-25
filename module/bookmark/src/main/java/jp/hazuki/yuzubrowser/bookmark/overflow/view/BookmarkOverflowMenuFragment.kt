@@ -24,8 +24,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import jp.hazuki.bookmark.R
-import jp.hazuki.bookmark.databinding.FragmentBookmarkOverflowBinding
+import jp.hazuki.yuzubrowser.bookmark.R
+import jp.hazuki.yuzubrowser.bookmark.databinding.FragmentBookmarkOverflowBinding
 import jp.hazuki.yuzubrowser.bookmark.overflow.HideMenuType
 import jp.hazuki.yuzubrowser.bookmark.overflow.MenuType
 import jp.hazuki.yuzubrowser.bookmark.overflow.viewmodel.OverflowMenuViewModel
@@ -63,6 +63,15 @@ class BookmarkOverflowMenuFragment : Fragment() {
         val menuList = mutableListOf<MenuItem>()
         builder.forEach { menuList.add(it) }
         mainViewModel.setOverflowMenus(type, menuList)
+
+        mainViewModel.menuModels.observe(viewLifecycleOwner) { models ->
+            val adapter = binding.recyclerView.adapter as OverflowMenuAdapter
+            adapter.list.run {
+                clear()
+                addAll(models)
+            }
+            adapter.notifyDataSetChanged()
+        }
     }
 
     override fun onPause() {

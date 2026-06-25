@@ -14,37 +14,38 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'com.google.devtools.ksp'
+}
 apply plugin: 'kotlin-parcelize'
-apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
 android {
-    compileSdkVersion Build.compile_sdk_version
+    compileSdk Build.compile_sdk_version
+    namespace "jp.hazuki.yuzubrowser.download"
 
     defaultConfig {
-        minSdkVersion Build.min_sdk_version
-        targetSdkVersion Build.target_sdk_version
-        versionCode 1
-        versionName "1.0"
+        minSdk Build.min_sdk_version
+        targetSdk Build.target_sdk_version
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -64,7 +65,7 @@ dependencies {
     implementation AndroidX.recyclerView
     implementation AndroidX.constraintLayout
     implementation AndroidX.KTX
-    implementation AndroidX.activty
+    implementation AndroidX.activity
     implementation AndroidX.documentFile
 
     implementation Libs.kotlin_stdlib
@@ -78,12 +79,11 @@ dependencies {
     implementation project(':libraries:asyncpermissions')
 
     implementation Libs.okhttp
-    implementation Libs.header_decor
 
     implementation Dagger.hilt
-    kapt Dagger.hiltCompiler
+    ksp Dagger.hiltCompiler
 
     implementation AndroidX.room
     implementation AndroidX.roomKtx
-    kapt AndroidX.roomCompiler
+    ksp AndroidX.roomCompiler
 }

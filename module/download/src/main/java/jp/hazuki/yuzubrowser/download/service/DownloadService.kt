@@ -310,7 +310,7 @@ class DownloadService : Service(), ServiceClient.ServiceClientListener {
                 setContentTitle(info.name)
                 setWhen(info.startTime)
                 setProgress(0, 0, true)
-                setContentIntent(PendingIntent.getActivity(applicationContext, 0, intentFor<DownloadListActivity>(), 0))
+                setContentIntent(PendingIntent.getActivity(applicationContext, 0, intentFor<DownloadListActivity>(), PendingIntent.FLAG_IMMUTABLE))
                 notificationManager.notify(info.id.toInt(), build())
             }
             updateInfo(ServiceSocket.UPDATE, info)
@@ -345,7 +345,7 @@ class DownloadService : Service(), ServiceClient.ServiceClientListener {
                 setAutoCancel(true)
                 setContentText(getText(R.string.download_success))
                 setSmallIcon(android.R.drawable.stat_sys_download_done)
-                setContentIntent(PendingIntent.getActivity(applicationContext, 0, info.createFileOpenIntent(this@DownloadService, downloadedFile), 0))
+                setContentIntent(PendingIntent.getActivity(applicationContext, 0, info.createFileOpenIntent(this@DownloadService, downloadedFile), PendingIntent.FLAG_IMMUTABLE))
                 notificationManager.notify(info.id.toInt(), build())
             }
             updateInfo(ServiceSocket.UPDATE, info)
@@ -372,7 +372,7 @@ class DownloadService : Service(), ServiceClient.ServiceClientListener {
                 setAutoCancel(true)
                 setContentText(getText(R.string.download_fail))
                 setSmallIcon(android.R.drawable.stat_sys_warning)
-                setContentIntent(PendingIntent.getActivity(applicationContext, 0, intentFor<DownloadListActivity>(), 0))
+                setContentIntent(PendingIntent.getActivity(applicationContext, 0, intentFor<DownloadListActivity>(), PendingIntent.FLAG_IMMUTABLE))
                 notificationManager.notify(info.id.toInt(), build())
             }
             updateInfo(ServiceSocket.UPDATE, info)
@@ -388,14 +388,14 @@ class DownloadService : Service(), ServiceClient.ServiceClientListener {
                     setAutoCancel(true)
                     setContentText(getText(R.string.download_paused))
                     setSmallIcon(R.drawable.ic_pause_white_24dp)
-                    setContentIntent(PendingIntent.getActivity(applicationContext, 0, intentFor<DownloadListActivity>(), 0))
+                    setContentIntent(PendingIntent.getActivity(applicationContext, 0, intentFor<DownloadListActivity>(), PendingIntent.FLAG_IMMUTABLE))
 
                     val resume = Intent(this@DownloadService, DownloadService::class.java).apply {
                         action = INTENT_ACTION_RESTART_DOWNLOAD
                         putExtra(INTENT_EXTRA_DOWNLOAD_ID, info.id)
                     }
                     addAction(R.drawable.ic_start_white_24dp, getText(R.string.resume_download),
-                        PendingIntent.getService(this@DownloadService, info.id.toInt(), resume, 0))
+                        PendingIntent.getService(this@DownloadService, info.id.toInt(), resume, PendingIntent.FLAG_IMMUTABLE))
                     notificationManager.notify(info.id.toInt(), build())
                 }
             } else {
@@ -425,12 +425,12 @@ class DownloadService : Service(), ServiceClient.ServiceClientListener {
                     if (info.resumable) {
                         val pause = Intent(INTENT_ACTION_PAUSE_DOWNLOAD).apply { putExtra(INTENT_EXTRA_DOWNLOAD_ID, info.id) }
                         addAction(R.drawable.ic_pause_white_24dp, getText(R.string.pause_download),
-                            PendingIntent.getBroadcast(this@DownloadService, info.id.toInt(), pause, PendingIntent.FLAG_UPDATE_CURRENT))
+                            PendingIntent.getBroadcast(this@DownloadService, info.id.toInt(), pause, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE))
                     }
 
                     val cancel = Intent(INTENT_ACTION_CANCEL_DOWNLOAD).apply { putExtra(INTENT_EXTRA_DOWNLOAD_ID, info.id) }
                     addAction(R.drawable.ic_cancel_white_24dp, getText(android.R.string.cancel),
-                        PendingIntent.getBroadcast(this@DownloadService, info.id.toInt(), cancel, PendingIntent.FLAG_UPDATE_CURRENT))
+                        PendingIntent.getBroadcast(this@DownloadService, info.id.toInt(), cancel, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE))
                 }
             }
         }
@@ -471,7 +471,7 @@ class DownloadService : Service(), ServiceClient.ServiceClientListener {
                 setAutoCancel(true)
                 setContentText(getText(message))
                 setSmallIcon(android.R.drawable.stat_sys_warning)
-                setContentIntent(PendingIntent.getActivity(applicationContext, 0, intentFor<DownloadListActivity>(), 0))
+                setContentIntent(PendingIntent.getActivity(applicationContext, 0, intentFor<DownloadListActivity>(), PendingIntent.FLAG_IMMUTABLE))
                 notificationManager.notify(info.id.toInt(), build())
             }
             updateInfo(ServiceSocket.UPDATE, info)

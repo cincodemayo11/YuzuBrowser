@@ -27,10 +27,18 @@ import jp.hazuki.yuzubrowser.webview.utility.trimForHttpHeader
 class YuzuWebSettings(private val origin: WebSettings) {
 
     var appCacheEnabled = false
+        @SuppressLint("NewApi")
         set(flag) {
-            origin.setAppCacheEnabled(flag)
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {  // API 33
+                @Suppress("DiscouragedPrivateApi")
+                //origin.setAppCacheEnabled(flag)
+                Unit
+            }
             field = flag
         }
+
+
+
     var geolocationEnabled = false
         set(flag) {
             origin.setGeolocationEnabled(flag)
@@ -321,15 +329,25 @@ class YuzuWebSettings(private val origin: WebSettings) {
         origin.setGeolocationDatabasePath(databasePath)
     }
 
+    /*@SuppressLint("NewApi")
     fun setAppCachePath(appCachePath: String) {
-        origin.setAppCachePath(appCachePath)
-    }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {  // API 33
+            origin.setAppCachePath(appCachePath)
+        }
+    }*/
 
-    @Suppress("DEPRECATION")
+
+
+    /*@Suppress("DEPRECATION")
+    @SuppressLint("NewApi")
     @Deprecated("")
     fun setAppCacheMaxSize(appCacheMaxSize: Long) {
-        origin.setAppCacheMaxSize(appCacheMaxSize)
-    }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {  // API 33
+            origin.setAppCacheMaxSize(appCacheMaxSize)
+        }
+    }*/
+
+
 
     fun setNeedInitialFocus(flag: Boolean) {
         origin.setNeedInitialFocus(flag)

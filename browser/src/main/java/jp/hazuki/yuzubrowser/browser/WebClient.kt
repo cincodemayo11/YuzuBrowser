@@ -286,7 +286,7 @@ class WebClient(
             setting.saveFormData = noPrivate && AppPrefs.save_formdata.get()
         }
 
-        setting.setAppCachePath(activity.appCacheFilePath)
+        //setting.setAppCachePath(activity.appCacheFilePath)
 
         var webViewTheme: CustomWebView.WebViewTheme? = null
         val theme = ThemeData.getInstance()
@@ -1033,15 +1033,19 @@ class WebClient(
         if (AppPrefs.share_unknown_scheme.get()) {
             if (WebUtils.isOverrideScheme(uri)) {
                 val intent = Intent(Intent.ACTION_VIEW, uri)
-                val info = activity.packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)
-                if (info != null) {
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    try {
-                        activity.startActivity(intent)
-                        return true
-                    } catch (e: SecurityException) {
-                        e.printStackTrace()
-                    }
+                val flags = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                PackageManager.MATCH_DEFAULT_ONLY or PackageManager.MATCH_ALL
+                else
+                    PackageManager.MATCH_DEFAULT_ONLY
+                    val info = activity.packageManager.resolveActivity(intent, flags)
+                    if (info != null) {
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        try {
+                            activity.startActivity(intent)
+                            return true
+                        } catch (e: SecurityException) {
+                            e.printStackTrace()
+                        }
 
                 }
                 val fallbackUrl = intent.getStringExtra("browser_fallback_url")

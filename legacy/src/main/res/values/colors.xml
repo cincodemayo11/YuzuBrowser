@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_gray">#FFE0E0E0</color>
+    <color name="deep_gray">#FF424242</color>
+    <color name="dark_border">#FF212121</color>
+    <color name="light_border">#FFBDBDBD</color>
+    <color name="dark_box">#FF303030</color>
+    <color name="action_mode_background">#FF424242</color>
+    <color name="default_nav_color">#FF000000</color>
+    <color name="browser_primary_dark">#FF000000</color>
+    <color name="toolbar_text_color">#FFFFFFFF</color>
+    <color name="scroll_bar">#FF9E9E9E</color>
+    <color name="selected_overlay">#1F000000</color>
+    <color name="qc_normal">#80FFFFFF</color>
+    <color name="qc_selected">#FFFFFFFF</color>
+</resources>

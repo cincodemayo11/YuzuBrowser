@@ -25,7 +25,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import jp.hazuki.bookmark.R
+import jp.hazuki.yuzubrowser.bookmark.R
 import jp.hazuki.yuzubrowser.bookmark.item.BookmarkFolder
 import jp.hazuki.yuzubrowser.bookmark.item.BookmarkItem
 import jp.hazuki.yuzubrowser.bookmark.item.BookmarkSite

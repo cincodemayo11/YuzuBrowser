@@ -29,7 +29,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ca.barrenechea.widget.recyclerview.decoration.StickyHeaderDecoration
+
 import com.turingtechnologies.materialscrollbar.TouchScrollBar
 import dagger.hilt.android.AndroidEntryPoint
 import jp.hazuki.yuzubrowser.bookmark.view.showAddBookmarkDialog
@@ -92,9 +92,9 @@ class BrowserHistoryFragment : Fragment(), BrowserHistoryAdapter.OnHistoryRecycl
 
         manager = BrowserHistoryManager.getInstance(activity)
         adapter = BrowserHistoryAdapter(activity, manager, faviconManager, pickMode, this)
-        val decoration = StickyHeaderDecoration(adapter)
-        adapter.setDecoration(decoration)
-        recyclerView.addItemDecoration(decoration)
+        //val decoration = StickyHeaderDecoration(adapter)
+        //adapter.setDecoration(decoration)
+        //recyclerView.addItemDecoration(decoration)
         recyclerView.adapter = adapter
 
         recyclerView.addOnItemTouchListener(locationDetector)

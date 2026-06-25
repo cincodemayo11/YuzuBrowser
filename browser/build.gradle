@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2021 Hazuki
+ * Copyright (C) 2017-2024 Hazuki
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,26 +14,39 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
+// CHANGED: apply plugin -> plugins {} block
+// CHANGED: kotlin-kapt -> ksp
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'com.google.devtools.ksp'
+    id 'dagger.hilt.android.plugin'
+}
 
 android {
-    compileSdkVersion Build.compile_sdk_version
+    // CHANGED: compileSdk -> compileSdk (AGP 8.x)
+    compileSdk Build.compile_sdk_version
+
+    // ADDED: namespace required by AGP 8.x (replaces package in AndroidManifest)
+    namespace "jp.hazuki.yuzubrowser.browser"
 
     defaultConfig {
-        minSdkVersion Build.min_sdk_version
-        targetSdkVersion Build.target_sdk_version
-        versionCode 1
-        versionName "1.0"
-
+        // CHANGED: minSdkVersion/targetSdk -> minSdk/targetSdk (AGP 8.x)
+        minSdk Build.min_sdk_version
+        targetSdk Build.target_sdk_version
+        // CHANGED: versionCode/versionName removed — not meaningful in a library module
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        // CHANGED: VERSION_17 -> VERSION_17 (required by AGP 8.x)
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        // ADDED: was missing from original; must match compileOptions
+        jvmTarget = "17"
     }
 
     buildTypes {
@@ -48,9 +61,8 @@ android {
     }
 }
 
-repositories {
-    maven { url 'https://jitpack.io' }
-}
+// REMOVED: repositories {} block — now centralized in settings.gradle
+// dependencyResolutionManagement handles jitpack globally
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -73,9 +85,11 @@ dependencies {
     implementation Libs.okhttp
     implementation Libs.okio
     implementation Libs.moshi
-    kapt Libs.moshiCodeGen
+    // CHANGED: kapt -> ksp
+    ksp Libs.moshiCodeGen
 
     implementation 'com.github.turing-tech:MaterialScrollBar:13.3.4'
+
     implementation project(':libraries:asyncpermissions')
     implementation project(':module:ui')
     implementation project(':legacy')
@@ -95,5 +109,6 @@ dependencies {
     implementation Libs.kotlin_coroutines_android
 
     implementation Dagger.hilt
-    kapt Dagger.hiltCompiler
+    // CHANGED: kapt -> ksp
+    ksp Dagger.hiltCompiler
 }

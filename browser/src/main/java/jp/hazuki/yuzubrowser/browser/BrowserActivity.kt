@@ -1557,7 +1557,7 @@ class BrowserActivity : BrowserBaseActivity(), BrowserController, FinishAlertDia
                 settings.domStorageEnabled = noPrivate && AppPrefs.web_dom_db.get()
                 settings.geolocationEnabled = noPrivate && AppPrefs.web_geolocation.get()
                 settings.appCacheEnabled = noPrivate && AppPrefs.web_app_cache.get()
-                settings.setAppCachePath(appCacheFilePath)
+                //settings.setAppCachePath(appCacheFilePath)
             }
 
             toolbar.notifyChangeWebState()

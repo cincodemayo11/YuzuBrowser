@@ -13,22 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jp.hazuki.yuzubrowser.bookmark.overflow
 
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import jp.hazuki.yuzubrowser.bookmark.overflow.model.OverflowMenuModel
 import jp.hazuki.yuzubrowser.bookmark.overflow.view.OverflowMenuAdapter
 
-@BindingAdapter("bind:viewmodels")
-internal fun RecyclerView.setViewModels(overflowMenuModels: List<OverflowMenuModel>?) {
-    if (overflowMenuModels != null) {
-        val adapter = adapter as OverflowMenuAdapter
-        adapter.list.run {
-            clear()
-            addAll(overflowMenuModels)
+object OverflowBindingAdapters {
+    @JvmStatic
+    @BindingAdapter("viewmodels")
+    fun setViewModels(recyclerView: RecyclerView, overflowMenuModels: MutableLiveData<List<OverflowMenuModel>>?) {
+        if (overflowMenuModels?.value != null) {
+            val adapter = recyclerView.adapter as OverflowMenuAdapter
+            adapter.list.run {
+                clear()
+                addAll(overflowMenuModels.value!!)
+            }
+            adapter.notifyDataSetChanged()
         }
-        adapter.notifyDataSetChanged()
     }
 }

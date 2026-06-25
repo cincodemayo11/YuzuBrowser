@@ -44,9 +44,9 @@ private fun ContentResolver.savePictureAsPngQ(fileName: String, bitmap: Bitmap):
     val uri = insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values) ?: return false
 
     return try {
-        openOutputStream(uri).use {
+        openOutputStream(uri)?.use {
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, it)
-        }
+        } ?: return false
 
         values.apply {
             clear()

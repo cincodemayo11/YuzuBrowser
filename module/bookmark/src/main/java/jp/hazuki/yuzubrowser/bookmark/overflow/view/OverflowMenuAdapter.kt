@@ -19,7 +19,7 @@ package jp.hazuki.yuzubrowser.bookmark.overflow.view
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import jp.hazuki.bookmark.databinding.BookmarkOverlowMenuItemBinding
+import jp.hazuki.yuzubrowser.bookmark.databinding.BookmarkOverlowMenuItemBinding
 import jp.hazuki.yuzubrowser.bookmark.overflow.model.OverflowMenuModel
 
 class OverflowMenuAdapter : RecyclerView.Adapter<OverflowMenuAdapter.OverflowMenuHolder>() {

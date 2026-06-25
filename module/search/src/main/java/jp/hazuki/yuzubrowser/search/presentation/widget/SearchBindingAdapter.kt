@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@file:JvmName("SearchBindingAdapters")
+
 package jp.hazuki.yuzubrowser.search.presentation.widget
 
 import android.view.inputmethod.EditorInfo
@@ -21,6 +23,7 @@ import android.widget.EditText
 import androidx.databinding.BindingAdapter
 import androidx.databinding.BindingMethod
 import androidx.databinding.BindingMethods
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -34,41 +37,40 @@ import jp.hazuki.yuzubrowser.search.presentation.settings.SearchUrlDiffCallback
 class SearchBindingAdapter
 
 @BindingAdapter("viewmodels")
-fun RecyclerView.setViewModels(suggestModels: List<SearchSuggestModel>?) {
-    if (suggestModels != null) {
-        val adapter = adapter as SearchSuggestAdapter
-        adapter.list.run {
-            clear()
-            addAll(suggestModels)
-        }
-        adapter.notifyDataSetChanged()
-        val layoutManager = layoutManager as LinearLayoutManager
-        if (layoutManager.reverseLayout && adapter.itemCount > 0) {
-            scrollToPosition(0)
-        }
+fun setViewModels(recyclerView: RecyclerView, suggestModels: MutableLiveData<List<SearchSuggestModel>>?) {
+    val models = suggestModels?.value ?: return
+    val adapter = recyclerView.adapter as SearchSuggestAdapter
+    adapter.list.run {
+        clear()
+        addAll(models)
+    }
+    adapter.notifyDataSetChanged()
+    val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+    if (layoutManager.reverseLayout && adapter.itemCount > 0) {
+        recyclerView.scrollToPosition(0)
     }
 }
 
-@BindingAdapter("viewmodels")
-fun RecyclerView.setSearchUrl(searchUrls: List<SearchUrl>?) {
-    if (searchUrls == null) return
-
-    val adapter = adapter as SearchUrlAdapter
-    val diff = DiffUtil.calculateDiff(SearchUrlDiffCallback(adapter.list, searchUrls), true)
+@BindingAdapter("searchUrls")
+fun setSearchUrl(recyclerView: RecyclerView, searchUrls: MutableLiveData<List<SearchUrl>>?) {
+    val urls = searchUrls?.value ?: return
+    val adapter = recyclerView.adapter as SearchUrlAdapter
+    val diff = DiffUtil.calculateDiff(SearchUrlDiffCallback(adapter.list, urls), true)
     adapter.list.run {
         clear()
-        addAll(searchUrls)
+        addAll(urls)
     }
     diff.dispatchUpdatesTo(adapter)
 }
 
 @BindingAdapter("callback")
-fun EditText.setSearchCallback(callback: SearchButton.Callback) {
-    setOnEditorActionListener { _, actionId, _ ->
-        if (EditorInfo.IME_ACTION_GO == actionId) {
-            callback.autoSearch()
-            return@setOnEditorActionListener true
+fun setSearchCallback(editText: EditText, callback: SearchButton.Callback?) {
+    if (callback == null) return
+        editText.setOnEditorActionListener { _, actionId, _ ->
+            if (EditorInfo.IME_ACTION_GO == actionId) {
+                callback.autoSearch()
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
         }
-        return@setOnEditorActionListener false
-    }
 }

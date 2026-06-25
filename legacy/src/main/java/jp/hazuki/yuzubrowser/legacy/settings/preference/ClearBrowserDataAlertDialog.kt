@@ -35,7 +35,7 @@ import jp.hazuki.yuzubrowser.ui.preference.CustomDialogPreference
 import jp.hazuki.yuzubrowser.ui.settings.AppPrefs
 import javax.inject.Inject
 
-class ClearBrowserDataAlertDialog @JvmOverloads constructor(context: Context?, attrs: AttributeSet? = null) : CustomDialogPreference(context, attrs) {
+class ClearBrowserDataAlertDialog @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : CustomDialogPreference(context, attrs) {
     override fun crateCustomDialog(): CustomDialogFragment = ClearDialog()
 
     @AndroidEntryPoint

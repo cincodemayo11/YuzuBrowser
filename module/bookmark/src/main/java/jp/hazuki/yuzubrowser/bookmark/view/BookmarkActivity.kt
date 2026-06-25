@@ -24,7 +24,7 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.fragment.app.commit
 import dagger.hilt.android.AndroidEntryPoint
-import jp.hazuki.bookmark.R
+import jp.hazuki.yuzubrowser.bookmark.R
 import jp.hazuki.yuzubrowser.ui.INTENT_EXTRA_MODE_FULLSCREEN
 import jp.hazuki.yuzubrowser.ui.INTENT_EXTRA_MODE_ORIENTATION
 import jp.hazuki.yuzubrowser.ui.app.LongPressFixActivity

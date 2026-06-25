@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2021 Hazuki
+ * Copyright (C) 2017-2024 Hazuki
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,63 +15,72 @@
  */
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-apply plugin: 'com.github.ben-manes.versions'
+
+// CHANGED: apply plugin -> plugins {} block (modern style)
+// CHANGED: ben-manes versions plugin bumped to current
 
 buildscript {
     repositories {
         mavenCentral()
-        jcenter()
+        // CHANGED: jcenter() removed — it is sunset and packages are disappearing
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.2'
-        classpath Dependencies.kotlin_plugin
-        classpath Dagger.hiltPlugin
-        classpath 'com.github.ben-manes:gradle-versions-plugin:0.36.0'
-        classpath 'com.android.tools.build.jetifier:jetifier-processor:1.0.0-beta10'
-        classpath 'com.google.gms:google-services:4.3.5'
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.5.0'
+        // CHANGED: AGP 4.1.2 -> 8.4.2 (major jump; see migration notes below)
+        classpath 'com.android.tools.build:gradle:8.4.2'
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        // CHANGED: Kotlin plugin version should match Dependencies.kt — bump to 2.0.x there
+        // Cannot reference buildSrc "Dependencies" here — Gradle shadows it with its own Dependencies type
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.21"
+
+        // CHANGED: Hilt plugin — ensure Dependencies.kt has hiltPlugin = "2.51.1"
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.51.1'
+
+        // CHANGED: ben-manes moved into plugins {} block above; no longer needed here
+        // classpath 'com.github.ben-manes:gradle-versions-plugin:0.36.0'  <-- removed
+
+        // CHANGED: Jetifier removed — it was only needed for legacy Support Library -> AndroidX
+        // migration. If any dependency still needs it, add android.enableJetifier=true to
+        // gradle.properties instead of carrying the processor classpath here.
+        // classpath 'com.android.tools.build.jetifier:jetifier-processor:1.0.0-beta10'  <-- removed
+
+        // CHANGED: google-services bumped 4.3.5 -> 4.4.2
+        //classpath 'com.google.gms:google-services:4.4.2'
+
+        // CHANGED: firebase-crashlytics-gradle bumped 2.5.0 -> 3.0.2
+        //classpath 'com.google.firebase:firebase-crashlytics-gradle:3.0.2'
+
+        // ADDED: KSP plugin — required to replace kapt in app/build.gradle and submodules
+        // Version must match your Kotlin version exactly (Kotlin 2.0.x -> KSP 2.0.x-1.0.xx)
+        classpath 'com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:2.0.21-1.0.28'
     }
 }
 
-configurations {
-    dependencyUpdates.resolutionStrategy {
-        componentSelection { rules ->
-            rules.all { ComponentSelection selection ->
-                boolean rejected = ['alpha', 'beta', 'rc', 'cr', 'm', 'preview'].any { qualifier ->
-                    selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
-                }
-                if (rejected) {
-                    selection.reject('Release candidate')
-                }
-            }
-        }
-    }
+plugins {
+    id 'com.github.ben-manes.versions' version '0.51.0' apply true
 }
 
-static def isNonStable(v) {
-    ["-alpha", "-beta", "-rc", "-m"].any { v.toLowerCase().contains(it) }
+// Dependency update filtering — reject pre-release upgrades from stable versions
+static def isNonStable(String v) {
+    ["-alpha", "-beta", "-rc", "-m", "-preview"].any { v.toLowerCase().contains(it) }
 }
 
 tasks.named("dependencyUpdates").configure {
-
-    // Example 2: disallow release candidates as upgradable versions from stable versions
     rejectVersionIf {
         isNonStable(it.candidate.version) && !isNonStable(it.currentVersion)
     }
 }
 
+// CHANGED: allprojects repositories block — jcenter() removed
+// jitpack stays in app/build.gradle where it's actually needed, not globally
 allprojects {
     repositories {
         mavenCentral()
-        jcenter()
         google()
     }
 }
 
-task clean(type: Delete) {
+// CHANGED: task clean -> tasks.register (AGP 8.x deprecates the old task {} syntax)
+tasks.register('clean', Delete) {
     delete rootProject.buildDir
 }

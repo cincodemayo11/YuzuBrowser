@@ -31,8 +31,8 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
-import jp.hazuki.bookmark.R
-import jp.hazuki.bookmark.databinding.FragmentBookmarkBinding
+import jp.hazuki.yuzubrowser.bookmark.R
+import jp.hazuki.yuzubrowser.bookmark.databinding.FragmentBookmarkBinding
 import jp.hazuki.yuzubrowser.bookmark.item.BookmarkFolder
 import jp.hazuki.yuzubrowser.bookmark.item.BookmarkItem
 import jp.hazuki.yuzubrowser.bookmark.item.BookmarkSite

@@ -21,7 +21,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import jp.hazuki.bookmark.R
+import jp.hazuki.yuzubrowser.bookmark.R
 import jp.hazuki.yuzubrowser.bookmark.item.BookmarkItem
 import jp.hazuki.yuzubrowser.bookmark.item.BookmarkSite
 import jp.hazuki.yuzubrowser.core.utility.utils.FontUtils

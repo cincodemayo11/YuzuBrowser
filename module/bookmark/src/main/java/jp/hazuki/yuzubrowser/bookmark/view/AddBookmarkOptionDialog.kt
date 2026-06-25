@@ -20,7 +20,7 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
-import jp.hazuki.bookmark.R
+import jp.hazuki.yuzubrowser.bookmark.R
 import jp.hazuki.yuzubrowser.bookmark.repository.BookmarkManager
 import jp.hazuki.yuzubrowser.core.eventbus.LocalEventBus
 import jp.hazuki.yuzubrowser.ui.BROADCAST_ACTION_NOTIFY_CHANGE_WEB_STATE

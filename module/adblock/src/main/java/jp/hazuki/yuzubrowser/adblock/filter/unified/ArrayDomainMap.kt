@@ -24,8 +24,9 @@ class ArrayDomainMap(size: Int) : SimpleArrayMap<String, Boolean>(size), DomainM
         get() = size()
 
     override fun get(domain: String): Boolean? {
-        return getOrDefault(domain, null)
+        return if (containsKey(domain)) super.get(domain) else null
     }
+
 
     operator fun set(domain: String, value: Boolean) {
         put(domain, value)

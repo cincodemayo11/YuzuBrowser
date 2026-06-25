@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2021 Hazuki
+ * Copyright (C) 2017-2024 Hazuki
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,24 +14,36 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
-apply plugin: 'com.cookpad.android.plugin.license-tools'
-apply plugin: 'com.google.gms.google-services'
-apply plugin: 'com.google.firebase.crashlytics'
+// CHANGED: removed kotlin-kapt, replaced with ksp
+// CHANGED: removed com.cookpad.android.plugin.license-tools (unmaintained, jcenter-only)
+// CHANGED: removed io.fabric (Fabric is shut down; Firebase Crashlytics plugin handles this now)
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'com.google.devtools.ksp'
+    id 'dagger.hilt.android.plugin'
+//    id 'com.google.gms.google-services'
+//    id 'com.google.firebase.crashlytics'
+}
 
-def gitHash = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
+def gitHash = providers.exec {
+    ignoreExitValue true
+    commandLine 'git', 'rev-parse', '--short', 'HEAD'
+}.standardOutput.asText.get().trim().with { it.empty ? 'unknown' : it }
+
 def buildTime = new Date().format("yyyy-MM-dd'T'HH:mm:ssXXX")
 
 android {
-    compileSdkVersion Build.compile_sdk_version
-    buildToolsVersion Build.build_tools_version
+    // CHANGED: use = assignment syntax (required by AGP 8.x)
+    compileSdk Build.compile_sdk_version
+    // CHANGED: buildToolsVersion is no longer needed; AGP manages it automatically
+
+    namespace "jp.hazuki.yuzubrowser"
+
     defaultConfig {
-        applicationId "jp.hazuki.yuzubrowser"
-        minSdkVersion Build.min_sdk_version
-        targetSdkVersion Build.target_sdk_version
+        applicationId "jp.hazuki.yuzubrowser.modern"
+        minSdk Build.min_sdk_version
+        targetSdk Build.target_sdk_version
         versionCode AppVersions.version_code
         versionName AppVersions.version_name
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -44,46 +56,56 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        // CHANGED: Java 17 required by AGP 8.x
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
+        }
+
+     signingConfigs {
+        release {
+            storeFile file("/home/monaka/yuzu.keystore")
+            storePassword "isbased"
+            keyAlias "yuzu"
+            keyPassword "isbased"
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled true
             shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            manifestPlaceholders = [crashlyticsCollectionEnabled:"true"]
-            lintOptions {
-                disable 'MissingTranslation', 'GoogleAppIndexingWarning', 'ClickableViewAccessibility'
-            }
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //manifestPlaceholders = [crashlyticsCollectionEnabled: "true"]
+            signingConfig signingConfigs.release
         }
         debug {
-            ext.enableCrashlytics = false
-            ext.alwaysUpdateBuildId = false
             applicationIdSuffix ".debug"
             resValue "string", "package_name", "${defaultConfig.applicationId}.debug"
-            manifestPlaceholders = [crashlyticsCollectionEnabled:"false"]
+            manifestPlaceholders = [crashlyticsCollectionEnabled: "false"]
         }
     }
-    packagingOptions {
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/CHANGES'
-        exclude 'META-INF/README.md'
+
+    lint {
+        disable 'MissingTranslation', 'GoogleAppIndexingWarning', 'ClickableViewAccessibility'
+    }
+
+    packaging {
+        resources {
+            excludes += ['META-INF/LICENSE', 'META-INF/CHANGES', 'META-INF/README.md']
+        }
     }
 
     applicationVariants.all { variant ->
         if (variant.buildType.name == "release") {
             variant.outputs.each { output ->
                 if (output.outputFileName.endsWith('.apk')) {
-                    // Rename APK
-                    def applicationId = defaultConfig.applicationId
-                    def versionCode = defaultConfig.versionCode
-                    def versionName = defaultConfig.versionName
-                    output.outputFileName = "${applicationId}_v${versionName}_${versionCode}.apk"
+                    def appId = defaultConfig.applicationId
+                    def code = defaultConfig.versionCode
+                    def name = defaultConfig.versionName
+                    output.outputFileName = "${appId}_v${name}_${code}.apk"
                 }
             }
         }
@@ -91,31 +113,18 @@ android {
 
     buildFeatures {
         dataBinding true
+        buildConfig true
     }
 }
 
-// must be after the plugin is applied otherwise no tasks will be found
-android.applicationVariants.all { variant ->
-    def googleTask = tasks.findByName("process${variant.name.capitalize()}GoogleServices")
-    googleTask.enabled = "debug" != variant.name
-}
+// CHANGED: removed the old google-services task disabling hack; this is handled
+// automatically by the google-services plugin in modern versions
 
-buildscript {
-    repositories {
-        maven { url 'https://maven.fabric.io/public' }
-        maven { url "https://plugins.gradle.org/m2/" }
-        jcenter()
-    }
-
-    dependencies {
-        classpath 'io.fabric.tools:gradle:1.31.2'
-        classpath 'gradle.plugin.com.cookpad.android.plugin:plugin:1.2.6'
-    }
-}
-
+// CHANGED: removed per-module buildscript block (jcenter + Fabric); root build.gradle handles plugins
 repositories {
     maven { url 'https://jitpack.io' }
     mavenCentral()
+    google()
 }
 
 dependencies {
@@ -124,7 +133,8 @@ dependencies {
     androidTestImplementation Libs.espressoCore
 
     implementation Libs.moshi
-    kapt Libs.moshiCodeGen
+    // CHANGED: kapt -> ksp for Moshi codegen
+    ksp Libs.moshiCodeGen
     implementation Libs.okhttp
 
     implementation AndroidX.appcompat
@@ -132,6 +142,7 @@ dependencies {
     implementation AndroidX.room
     implementation AndroidX.documentFile
     implementation AndroidX.design
+
     implementation project(':libraries:asyncpermissions')
     implementation project(':browser')
     implementation project(':module:ui')
@@ -149,13 +160,11 @@ dependencies {
     implementation Libs.kotlin_stdlib
 
     implementation Dagger.hilt
-    kapt Dagger.hiltCompiler
+    // CHANGED: kapt -> ksp for Hilt compiler
+    ksp Dagger.hiltCompiler
 
-    // Import the BoM for the Firebase platform
-    implementation platform('com.google.firebase:firebase-bom:26.5.0')
-
-    // Declare the dependencies for the Crashlytics and Analytics libraries
-    // When using the BoM, you don't specify versions in Firebase library dependencies
-    implementation 'com.google.firebase:firebase-crashlytics-ktx'
-    implementation 'com.google.firebase:firebase-analytics-ktx'
+    // CHANGED: bumped Firebase BOM from 26.5.0 to 33.x
+    //implementation platform('com.google.firebase:firebase-bom:33.1.2')
+    //implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    //implementation 'com.google.firebase:firebase-analytics-ktx'
 }

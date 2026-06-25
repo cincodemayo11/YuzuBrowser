@@ -16,14 +16,34 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="jp.hazuki.yuzubrowser">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <supports-screens
         android:smallScreens="true"
         android:normalScreens="true"
         android:largeScreens="true"
         android:xlargeScreens="true" />
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="http" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="market" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.SENDTO" />
+            <data android:scheme="mailto" />
+        </intent>
+    </queries>
 
     <application
         android:name=".YuzuBrowserApplication"
@@ -42,15 +62,16 @@
         <meta-data
             android:name="android.webkit.WebView.EnableSafeBrowsing"
             android:value="true" />
-        <meta-data
+        <!--<meta-data
             android:name="firebase_crashlytics_collection_enabled"
             android:value="${crashlyticsCollectionEnabled}" />
         <meta-data
             android:name="google_analytics_adid_collection_enabled"
-            android:value="false" />
+        android:value="false" />-->
 
         <activity
             android:name="jp.hazuki.yuzubrowser.browser.BrowserActivity"
+            android:exported="true"
             android:alwaysRetainTaskState="true"
             android:configChanges="screenLayout|smallestScreenSize|keyboardHidden|orientation|screenSize"
             android:launchMode="singleInstance"
@@ -69,6 +90,7 @@
         </activity>
         <activity
             android:name=".HandleIntentActivity"
+            android:exported="true"
             android:theme="@style/BrowserThemeDayNight.Transparent">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -120,6 +142,7 @@
         <activity-alias
             android:label="@string/open_in_browser"
             android:name=".ShareActivity"
+            android:exported="true"
             android:theme="@style/BrowserThemeDayNight.Transparent"
             android:targetActivity=".HandleIntentActivity">
             <intent-filter>
@@ -138,6 +161,7 @@
             android:theme="@style/BrowserThemeDayNight.Pref"/>
         <activity-alias
             android:name=".CreateSettingsShortCut"
+            android:exported="true"
             android:targetActivity="jp.hazuki.yuzubrowser.legacy.settings.activity.MainSettingsActivity"
             android:label="@string/browser_settings">
             <intent-filter>
@@ -271,6 +295,7 @@
             android:label="@string/pref_multi_finger_gesture_settings" />
         <activity
             android:name="jp.hazuki.yuzubrowser.legacy.theme.ThemeImportActivity"
+            android:exported="true"
             android:label="@string/theme_importer"
             android:theme="@style/BrowserThemeDayNight.Transparent"
             android:configChanges="keyboardHidden|orientation|screenSize">

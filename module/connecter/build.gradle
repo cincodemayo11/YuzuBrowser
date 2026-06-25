@@ -14,21 +14,30 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
 apply plugin: 'kotlin-parcelize'
 
 android {
-    compileSdkVersion Build.compile_sdk_version
-    buildToolsVersion Build.build_tools_version
+    compileSdk Build.compile_sdk_version
+    namespace "jp.hazuki.yuzubrowser.browser.connecter"
 
     defaultConfig {
-        minSdkVersion Build.min_sdk_version
-        targetSdkVersion Build.target_sdk_version
-        versionCode 1
-        versionName "1.0"
+        minSdk Build.min_sdk_version
+        targetSdk Build.target_sdk_version
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
     }
 
     buildTypes {

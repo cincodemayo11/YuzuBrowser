@@ -29,7 +29,6 @@ import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ca.barrenechea.widget.recyclerview.decoration.StickyHeaderDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import jp.hazuki.yuzubrowser.core.utility.extensions.resolvePath
 import jp.hazuki.yuzubrowser.core.utility.storage.toDocumentFile
@@ -83,9 +82,7 @@ class DownloadListFragment : Fragment(), ActivityClient.ActivityClientListener, 
         recyclerView.layoutManager = layoutManager
 
         adapter = DownloadListAdapter(activity, viewLifecycleOwner, downloadsDao, this)
-        val decoration = StickyHeaderDecoration(adapter)
-        adapter.decoration = decoration
-        recyclerView.addItemDecoration(decoration)
+
         recyclerView.adapter = adapter
 
         activity.onBackPressedDispatcher.addCallback(this) {

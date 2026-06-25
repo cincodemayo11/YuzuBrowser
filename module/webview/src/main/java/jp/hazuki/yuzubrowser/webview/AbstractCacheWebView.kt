@@ -525,7 +525,7 @@ internal abstract class AbstractCacheWebView(context: Context) : FrameLayout(con
 
         //Unknown get
         toSetting.appCacheEnabled = fromSetting.appCacheEnabled
-        toSetting.setAppCachePath(context.appCacheFilePath)
+        //toSetting.setAppCachePath(context.appCacheFilePath)
         toSetting.geolocationEnabled = fromSetting.geolocationEnabled
     }
 

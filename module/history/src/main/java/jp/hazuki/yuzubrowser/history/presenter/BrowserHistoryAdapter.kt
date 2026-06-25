@@ -30,8 +30,6 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
-import ca.barrenechea.widget.recyclerview.decoration.StickyHeaderAdapter
-import ca.barrenechea.widget.recyclerview.decoration.StickyHeaderDecoration
 import jp.hazuki.yuzubrowser.core.utility.utils.FontUtils
 import jp.hazuki.yuzubrowser.favicon.FaviconManager
 import jp.hazuki.yuzubrowser.history.repository.BrowserHistoryManager
@@ -48,10 +46,10 @@ class BrowserHistoryAdapter @SuppressLint("SimpleDateFormat")
 constructor(
     context: Context,
     private val manager: BrowserHistoryManager,
-    private val faviconManager: FaviconManager,
-    private val pickMode: Boolean,
-    private val listener: OnHistoryRecyclerListener
-) : RecyclerView.Adapter<BrowserHistoryAdapter.HistoryHolder>(), StickyHeaderAdapter<BrowserHistoryAdapter.HeaderHolder> {
+        private val faviconManager: FaviconManager,
+            private val pickMode: Boolean,
+                private val listener: OnHistoryRecyclerListener
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val defaultColorFilter = PorterDuffColorFilter(
         context.getColorFromThemeRes(R.attr.iconColor), PorterDuff.Mode.SRC_ATOP)
@@ -59,226 +57,228 @@ constructor(
     private val dateFormat = DateFormat.getLongDateFormat(context)
     @SuppressLint("SimpleDateFormat")
     private val timeFormat = SimpleDateFormat("kk:mm")
-    private var historyModels: MutableList<BrowserHistoryModel> = manager.getList(0, 100)
-    private var mQuery: String? = null
-    private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var mDecoration: StickyHeaderDecoration? = null
-    private val calendar = Calendar.getInstance()
+        private var historyModels: MutableList<BrowserHistoryModel> = manager.getList(0, 100)
+            private var mQuery: String? = null
+                private val inflater: LayoutInflater = LayoutInflater.from(context)
+                    private val calendar = Calendar.getInstance()
+                    private val displayList = mutableListOf<Any>()
 
-    var isMultiSelectMode: Boolean = false
-        set(multiSelect) {
-            if (multiSelect != isMultiSelectMode) {
-                field = multiSelect
+                    var isMultiSelectMode: Boolean = false
+                    set(multiSelect) {
+                        if (multiSelect != isMultiSelectMode) {
+                            field = multiSelect
+                            if (!multiSelect) {
+                                itemSelected.clear()
+                                selectedItemCount = 0
+                            }
+                            notifyDataSetChanged()
+                        }
+                    }
 
-                if (!multiSelect) {
-                    itemSelected.clear()
-                    selectedItemCount = 0
-                }
+                    var selectedItemCount: Int = 0
+                    private set
+                    private val itemSelected = SparseBooleanArray()
+                    private val foregroundOverlay = ColorDrawable(ResourcesCompat.getColor(context.resources,
+                                                                                           R.color.selected_overlay, context.theme))
 
-                notifyDataSetChanged()
-            }
-        }
+                    val selectedItems: List<Int>
+                    get() {
+                        val items = ArrayList<Int>()
+                        var i = 0
+                        while (itemSelected.size() > i) {
+                            if (itemSelected.valueAt(i)) items.add(itemSelected.keyAt(i))
+                                i++
+                        }
+                        return items
+                    }
 
-    var selectedItemCount: Int = 0
-        private set
-    private val itemSelected = SparseBooleanArray()
-    private val foregroundOverlay = ColorDrawable(ResourcesCompat.getColor(context.resources,
-        R.color.selected_overlay, context.theme))
+                    init {
+                        rebuildDisplayList()
+                    }
 
-    val selectedItems: List<Int>
-        get() {
-            val items = ArrayList<Int>()
-            var i = 0
-            while (itemSelected.size() > i) {
-                if (itemSelected.valueAt(i)) {
-                    items.add(itemSelected.keyAt(i))
-                }
-                i++
-            }
-            return items
-        }
+                    private fun rebuildDisplayList() {
+                        displayList.clear()
+                        var lastHeaderId = -1L
+                        for (item in historyModels) {
+                            val headerId = getDateId(item.time)
+                            if (headerId != lastHeaderId) {
+                                displayList.add(headerId)
+                                lastHeaderId = headerId
+                            }
+                            displayList.add(item)
+                        }
+                    }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryHolder {
-        return HistoryHolder(inflater.inflate(R.layout.history_item, parent, false))
-    }
+                    private fun getDateId(timeMillis: Long): Long {
+                        calendar.timeInMillis = timeMillis
+                        calendar.set(Calendar.HOUR_OF_DAY, 0)
+                        calendar.set(Calendar.MINUTE, 0)
+                        calendar.set(Calendar.SECOND, 0)
+                        calendar.set(Calendar.MILLISECOND, 0)
+                        return calendar.timeInMillis
+                    }
 
-    override fun onBindViewHolder(holder: HistoryHolder, position: Int) {
-        val item = historyModels[holder.adapterPosition]
-        val url = item.url?.decodePunyCodeUrlHost()
-        val image = faviconManager[item.url!!]
+                    override fun getItemViewType(position: Int) =
+                    if (displayList[position] is Long) VIEW_TYPE_HEADER else VIEW_TYPE_ITEM
 
-        if (image == null) {
-            holder.imageButton.setImageResource(R.drawable.ic_public_white_24dp)
-            holder.imageButton.colorFilter = defaultColorFilter
-        } else {
-            holder.imageButton.setImageBitmap(image)
-            holder.imageButton.colorFilter = faviconColorFilter
-        }
+                        override fun getItemCount() = displayList.size
 
-        if (isMultiSelectMode && isSelected(position)) {
-            holder.foreground.background = foregroundOverlay
-        } else {
-            holder.foreground.background = null
-        }
-        holder.titleTextView.text = item.title
-        holder.urlTextView.text = url
-        holder.timeTextView.text = timeFormat.format(Date(item.time))
+                        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+                            return if (viewType == VIEW_TYPE_HEADER) {
+                                HeaderHolder(inflater.inflate(R.layout.recycler_view_header, parent, false))
+                            } else {
+                                HistoryHolder(inflater.inflate(R.layout.history_item, parent, false))
+                            }
+                        }
 
-        holder.itemView.setOnClickListener { v ->
-            if (isMultiSelectMode) {
-                toggle(holder.adapterPosition)
-            } else {
-                listener.onRecyclerItemClicked(v, holder.adapterPosition)
-            }
-        }
+                        override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+                            when (holder) {
+                                is HeaderHolder -> {
+                                    val timestamp = displayList[position] as Long
+                                    holder.header.text = dateFormat.format(Date(timestamp))
+                                }
+                                is HistoryHolder -> {
+                                    val itemPos = getItemPosition(position)
+                                    if (itemPos < 0) return
+                                        val item = historyModels[itemPos]
+                                        val url = item.url?.decodePunyCodeUrlHost()
+                                        val image = faviconManager[item.url!!]
 
-        holder.itemView.setOnLongClickListener { v -> listener.onRecyclerItemLongClicked(v, holder.adapterPosition) }
+                                        if (image == null) {
+                                            holder.imageButton.setImageResource(R.drawable.ic_public_white_24dp)
+                                            holder.imageButton.colorFilter = defaultColorFilter
+                                        } else {
+                                            holder.imageButton.setImageBitmap(image)
+                                            holder.imageButton.colorFilter = faviconColorFilter
+                                        }
 
-        if (pickMode) {
-            holder.imageButton.isClickable = false
-            holder.overflowButton.visibility = View.GONE
-        } else {
-            holder.imageButton.setOnClickListener { v ->
-                if (isMultiSelectMode) {
-                    toggle(holder.adapterPosition)
-                } else {
-                    listener.onIconClicked(v, holder.adapterPosition)
-                }
-            }
-            holder.overflowButton.setOnClickListener {
-                if (isMultiSelectMode) {
-                    toggle(holder.adapterPosition)
-                } else {
-                    listener.onShowMenu(it, holder.adapterPosition)
-                }
-            }
-        }
-    }
+                                        holder.foreground.background =
+                                        if (isMultiSelectMode && isSelected(itemPos)) foregroundOverlay else null
+                                            holder.titleTextView.text = item.title
+                                            holder.urlTextView.text = url
+                                            holder.timeTextView.text = timeFormat.format(Date(item.time))
 
-    override fun getItemCount(): Int {
-        return historyModels.size
-    }
+                                            holder.itemView.setOnClickListener { v ->
+                                                val pos = getItemPosition(holder.adapterPosition)
+                                                if (isMultiSelectMode) toggle(pos)
+                                                    else listener.onRecyclerItemClicked(v, pos)
+                                            }
+                                            holder.itemView.setOnLongClickListener { v ->
+                                                listener.onRecyclerItemLongClicked(v, getItemPosition(holder.adapterPosition))
+                                            }
 
-    fun getItem(position: Int): BrowserHistoryModel {
-        return historyModels[position]
-    }
+                                            if (pickMode) {
+                                                holder.imageButton.isClickable = false
+                                                holder.overflowButton.visibility = View.GONE
+                                            } else {
+                                                holder.imageButton.setOnClickListener { v ->
+                                                    val pos = getItemPosition(holder.adapterPosition)
+                                                    if (isMultiSelectMode) toggle(pos)
+                                                        else listener.onIconClicked(v, pos)
+                                                }
+                                                holder.overflowButton.setOnClickListener {
+                                                    val pos = getItemPosition(holder.adapterPosition)
+                                                    if (isMultiSelectMode) toggle(pos)
+                                                        else listener.onShowMenu(it, pos)
+                                                }
+                                            }
+                                }
+                            }
+                        }
 
-    fun remove(position: Int): BrowserHistoryModel {
-        return historyModels.removeAt(position)
-    }
+                        private fun getItemPosition(displayPosition: Int): Int {
+                            if (displayPosition < 0 || displayPosition >= displayList.size) return -1
+                                val entry = displayList[displayPosition]
+                                if (entry is Long) return -1
+                                    return historyModels.indexOf(entry as BrowserHistoryModel)
+                        }
 
-    fun loadMore() {
-        if (mQuery == null) {
-            historyModels.addAll(manager.getList(itemCount, 100))
-        } else {
-            historyModels.addAll(manager.search(mQuery, itemCount, 100))
-        }
-        mDecoration!!.clearHeaderCache()
-    }
+                        fun getItem(position: Int): BrowserHistoryModel = historyModels[position]
 
-    fun reLoad() {
-        mQuery = null
-        historyModels = manager.getList(0, 100)
-        mDecoration!!.clearHeaderCache()
-        notifyDataSetChanged()
-    }
+                        fun remove(position: Int): BrowserHistoryModel {
+                            val item = historyModels.removeAt(position)
+                            rebuildDisplayList()
+                            notifyDataSetChanged()
+                            return item
+                        }
 
-    fun search(query: String) {
-        mQuery = query
-        historyModels = manager.search(mQuery, 0, 100)
-        mDecoration!!.clearHeaderCache()
-        notifyDataSetChanged()
-    }
+                        fun loadMore() {
+                            if (mQuery == null) historyModels.addAll(manager.getList(historyModels.size, 100))
+                                else historyModels.addAll(manager.search(mQuery, historyModels.size, 100))
+                                    rebuildDisplayList()
+                                    notifyDataSetChanged()
+                        }
 
-    fun setDecoration(headerDecoration: StickyHeaderDecoration) {
-        mDecoration = headerDecoration
-    }
+                        fun reLoad() {
+                            mQuery = null
+                            historyModels = manager.getList(0, 100)
+                            rebuildDisplayList()
+                            notifyDataSetChanged()
+                        }
 
-    override fun getHeaderId(position: Int): Long {
-        val time = historyModels[position].time
-        calendar.timeInMillis = time
-        calendar.set(Calendar.HOUR_OF_DAY, 0)
-        calendar.set(Calendar.MINUTE, 0)
-        calendar.set(Calendar.SECOND, 0)
-        calendar.set(Calendar.MILLISECOND, 0)
-        return calendar.timeInMillis
-    }
+                        fun search(query: String) {
+                            mQuery = query
+                            historyModels = manager.search(mQuery, 0, 100)
+                            rebuildDisplayList()
+                            notifyDataSetChanged()
+                        }
 
-    override fun onCreateHeaderViewHolder(parent: ViewGroup): HeaderHolder {
-        return HeaderHolder(inflater.inflate(R.layout.recycler_view_header, parent, false))
-    }
+                        fun toggle(position: Int) = setSelect(position, !itemSelected.get(position, false))
 
-    override fun onBindHeaderViewHolder(viewHolder: HeaderHolder, position: Int) {
-        viewHolder.header.text = dateFormat.format(Date(historyModels[position].time))
-    }
+                        fun setSelect(position: Int, isSelect: Boolean) {
+                            val old = itemSelected.get(position, false)
+                            itemSelected.put(position, isSelect)
+                            if (old != isSelect) {
+                                notifyItemChanged(position)
+                                if (isSelect) selectedItemCount++ else selectedItemCount--
+                                    if (selectedItemCount == 0) listener.onCancelMultiSelectMode()
+                                        else listener.onSelectionStateChange(selectedItemCount)
+                            }
+                        }
 
-    fun toggle(position: Int) {
-        setSelect(position, !itemSelected.get(position, false))
-    }
+                        fun isSelected(position: Int) = itemSelected.get(position, false)
 
-    fun setSelect(position: Int, isSelect: Boolean) {
-        val old = itemSelected.get(position, false)
-        itemSelected.put(position, isSelect)
+                        class HistoryHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+                            val foreground: View = itemView.findViewById(R.id.foreground)
+                            val imageButton: ImageButton = itemView.findViewById(R.id.imageButton)
+                            val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
+                            val urlTextView: TextView = itemView.findViewById(R.id.urlTextView)
+                            val timeTextView: TextView = itemView.findViewById(R.id.timeTextView)
+                            val overflowButton: ImageButton = itemView.findViewById(R.id.overflowButton)
 
-        if (old != isSelect) {
-            notifyItemChanged(position)
-            if (isSelect) selectedItemCount++ else selectedItemCount--
-            if (selectedItemCount == 0) {
-                listener.onCancelMultiSelectMode()
-            } else {
-                listener.onSelectionStateChange(selectedItemCount)
-            }
-        }
-    }
+                            init {
+                                val fontSizeSetting = AppPrefs.fontSizeHistory.get()
+                                if (fontSizeSetting >= 0) {
+                                    val normal = FontUtils.getTextSize(fontSizeSetting)
+                                    val small = FontUtils.getSmallerTextSize(fontSizeSetting)
+                                    titleTextView.textSize = normal.toFloat()
+                                    urlTextView.textSize = small.toFloat()
+                                    timeTextView.textSize = small.toFloat()
+                                }
+                            }
+                        }
 
-    fun isSelected(position: Int): Boolean {
-        return itemSelected.get(position, false)
-    }
+                        class HeaderHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+                            val header: TextView = itemView as TextView
 
-    class HistoryHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+                            init {
+                                val fontSizeSetting = AppPrefs.fontSizeHistory.get()
+                                if (fontSizeSetting >= 0) {
+                                    header.textSize = FontUtils.getTextSize(fontSizeSetting).toFloat()
+                                }
+                            }
+                        }
 
-        val foreground: View = itemView.findViewById(R.id.foreground)
-        val imageButton: ImageButton = itemView.findViewById(R.id.imageButton)
-        val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
-        val urlTextView: TextView = itemView.findViewById(R.id.urlTextView)
-        val timeTextView: TextView = itemView.findViewById(R.id.timeTextView)
-        val overflowButton: ImageButton = itemView.findViewById(R.id.overflowButton)
+                        interface OnHistoryRecyclerListener : OnRecyclerListener {
+                            fun onIconClicked(v: View, position: Int)
+                            fun onShowMenu(v: View, position: Int)
+                            fun onSelectionStateChange(items: Int)
+                            fun onCancelMultiSelectMode()
+                        }
 
-        init {
-            val fontSizeSetting = AppPrefs.fontSizeHistory.get()
-            if (fontSizeSetting >= 0) {
-                val normal = FontUtils.getTextSize(fontSizeSetting)
-                val small = FontUtils.getSmallerTextSize(fontSizeSetting)
-
-                titleTextView.textSize = normal.toFloat()
-                urlTextView.textSize = small.toFloat()
-                timeTextView.textSize = small.toFloat()
-            }
-        }
-    }
-
-    class HeaderHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val header: TextView = itemView as TextView
-
-        init {
-            val fontSizeSetting = AppPrefs.fontSizeHistory.get()
-            if (fontSizeSetting >= 0) {
-                header.textSize = FontUtils.getTextSize(fontSizeSetting).toFloat()
-            }
-        }
-    }
-
-    interface OnHistoryRecyclerListener : OnRecyclerListener {
-        fun onIconClicked(v: View, position: Int)
-
-        fun onShowMenu(v: View, position: Int)
-
-        fun onSelectionStateChange(items: Int)
-
-        fun onCancelMultiSelectMode()
-    }
-
-    companion object {
-        private val faviconColorFilter = PorterDuffColorFilter(0, PorterDuff.Mode.SRC_ATOP)
-    }
+                        companion object {
+                            private val faviconColorFilter = PorterDuffColorFilter(0, PorterDuff.Mode.SRC_ATOP)
+                            private const val VIEW_TYPE_HEADER = 0
+                            private const val VIEW_TYPE_ITEM = 1
+                        }
 }

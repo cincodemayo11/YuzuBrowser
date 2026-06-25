@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2021 Hazuki
+ * Copyright (C) 2017-2024 Hazuki
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,4 +14,47 @@
  * limitations under the License.
  */
 
-include ':app', ':libraries:floatingactionbutton', ':libraries:colorpicker', ':libraries:asyncpermissions', ':legacy', ':module:ui', ':module:core', ':languages', ':module:webview', ':browser', ':module:favicon', ':module:download', ':module:adblock', ':module:bookmark', ':module:connecter', ':module:history', ':module:search'
+// ADDED: pluginManagement block — required by AGP 8.x to resolve plugins correctly
+// when using buildSrc. Without this, Gradle 8.x will warn about missing plugin
+// resolution and may fail to find the AGP and KSP plugins.
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+// ADDED: dependencyResolutionManagement — centralizes repository declarations.
+// Submodules inherit these instead of each declaring their own repositories block.
+// PREFER_SETTINGS means submodule repo blocks are allowed but settings takes priority.
+// Switch to FAIL_ON_PROJECT_REPOS to enforce no per-module repo declarations at all.
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+    }
+}
+
+rootProject.name = "YuzuBrowser"
+
+// CHANGED: reformatted for readability; module list unchanged
+include ':app',
+    ':libraries:floatingactionbutton',
+    ':libraries:colorpicker',
+    ':libraries:asyncpermissions',
+    ':legacy',
+    ':module:ui',
+    ':module:core',
+    ':languages',
+    ':module:webview',
+    ':browser',
+    ':module:favicon',
+    ':module:download',
+    ':module:adblock',
+    ':module:bookmark',
+    ':module:connecter',
+    ':module:history',
+    ':module:search'

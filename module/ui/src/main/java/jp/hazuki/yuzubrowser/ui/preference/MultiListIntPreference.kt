@@ -47,9 +47,9 @@ class MultiListIntPreference(context: Context, attrs: AttributeSet) : DialogPref
         persistInt(ArrayUtils.getBitsInt(value))
     }
 
-    override fun onGetDefaultValue(a: TypedArray?, index: Int): Any {
+/*    fun onGetDefaultValue(a: TypedArray?, index: Int): Any {
         return a!!.getInt(index, -1)
-    }
+    }*/
 
     override fun onSetInitialValue(defaultValue: Any?) {
         setValue(getPersistedInt(defaultValue as? Int ?: ArrayUtils.getBitsInt(mValue)))
@@ -57,7 +57,7 @@ class MultiListIntPreference(context: Context, attrs: AttributeSet) : DialogPref
 
     class PrefernceDialog : YuzuPreferenceDialog() {
 
-        override fun onPrepareDialogBuilder(builder: androidx.appcompat.app.AlertDialog.Builder?) {
+        /*fun onPrepareDialogBuilder(builder: androidx.appcompat.app.AlertDialog.Builder?) {
             val pref = getParentPreference<MultiListIntPreference>()
             if (pref.mValue == null) {
                 pref.mValue = BooleanArray(pref.mMax)
@@ -65,7 +65,7 @@ class MultiListIntPreference(context: Context, attrs: AttributeSet) : DialogPref
             }
 
             builder!!.setMultiChoiceItems(pref.mEntriesId, pref.mValue) { _, which, isChecked -> pref.mValue!![which] = isChecked }
-        }
+        }*/
 
         override fun onDialogClosed(positiveResult: Boolean) {
             if (positiveResult) {

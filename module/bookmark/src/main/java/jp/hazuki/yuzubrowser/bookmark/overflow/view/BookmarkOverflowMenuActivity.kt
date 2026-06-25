@@ -21,7 +21,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.commit
 import dagger.hilt.android.AndroidEntryPoint
-import jp.hazuki.bookmark.R
+import jp.hazuki.yuzubrowser.bookmark.R
 import jp.hazuki.yuzubrowser.bookmark.overflow.HideMenuType
 import jp.hazuki.yuzubrowser.bookmark.overflow.MenuType
 import jp.hazuki.yuzubrowser.ui.app.ThemeActivity

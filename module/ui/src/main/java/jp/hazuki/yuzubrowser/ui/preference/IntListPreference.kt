@@ -34,9 +34,10 @@ class IntListPreference(context: Context, attrs: AttributeSet) : DialogPreferenc
     }
 
 
-    override fun onGetDefaultValue(a: TypedArray?, index: Int): Any {
-        return a!!.getInt(index, -1)
-    }
+//    fun onGetDefaultValue(a: TypedArray?, index: Int): Any {
+  //      return a?.getInt(index, -1) ?: -1
+    //}
+
 
     override fun onSetInitialValue(defaultValue: Any?) {
         value = defaultValue as? Int ?: getPersistedInt(value)
@@ -46,10 +47,10 @@ class IntListPreference(context: Context, attrs: AttributeSet) : DialogPreferenc
 
         private var mClickedItemIndex = -1
 
-        override fun onPrepareDialogBuilder(builder: androidx.appcompat.app.AlertDialog.Builder?) {
+        /*fun onPrepareDialogBuilder(builder: androidx.appcompat.app.AlertDialog.Builder?) {
             val pref = getParentPreference<IntListPreference>()
             mClickedItemIndex = pref.valueIndex
-            builder!!.setPositiveButton(null, null)
+            builder?.setPositiveButton(null, null)
 
             val length = pref.mEntryValues.size
             val lists = arrayOfNulls<String>(length)
@@ -57,12 +58,12 @@ class IntListPreference(context: Context, attrs: AttributeSet) : DialogPreferenc
                 lists[i] = pref.mEntryValues[i].toString()
             }
 
-            builder.setSingleChoiceItems(lists, mClickedItemIndex) { dialog, which ->
+            builder?.setSingleChoiceItems(lists, mClickedItemIndex) { dialog, which ->
                 mClickedItemIndex = which
                 this.onClick(dialog, DialogInterface.BUTTON_POSITIVE)
                 dialog.dismiss()
             }
-        }
+        }*/
 
         override fun onDialogClosed(positiveResult: Boolean) {
             val pref = getParentPreference<IntListPreference>()

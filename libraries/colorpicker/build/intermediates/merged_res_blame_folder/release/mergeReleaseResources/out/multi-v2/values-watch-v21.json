@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.android.colorpicker-release-22:/values-watch-v21/values-watch-v21.xml",
+            "map": [
+                {
+                    "source": "/home/monaka/.gradle/caches/8.9/transforms/1902d10025496df7bf343e40d9859f8c/transformed/appcompat-1.7.0/res/values-watch-v21/values-watch-v21.xml",
+                    "from": {
+                        "startLines": "2,6,10",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,271,499",
+                        "endLines": "5,9,13",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "266,494,724"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "com.android.colorpicker-mergeReleaseResources-20:/values-watch-v21/values-watch-v21.xml",
+            "map": [
+                {
+                    "source": "/home/monaka/.gradle/caches/8.9/transforms/1902d10025496df7bf343e40d9859f8c/transformed/appcompat-1.7.0/res/values-watch-v21/values-watch-v21.xml",
+                    "from": {
+                        "startLines": "2,6,10",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,271,499",
+                        "endLines": "5,9,13",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "266,494,724"
+                    }
+                }
+            ]
+        }
+    ]
+}

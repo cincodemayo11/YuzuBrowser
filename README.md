@@ -1,25 +1,29 @@
-# Yuzu browser
-[![license](https://img.shields.io/github/license/hazuki0x0/YuzuBrowser.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-&nbsp;Stable: [![GitHub release](https://img.shields.io/github/release/hazuki0x0/YuzuBrowser.svg)](https://play.google.com/store/apps/details?id=jp.hazuki.yuzubrowser)
-&nbsp;Latest: [![GitHub release](https://img.shields.io/github/v/release/hazuki0x0/YuzuBrowser?include_prereleases)](https://github.com/hazuki0x0/YuzuBrowser/releases)
+# YuzuBrowser (Modernized Fork)
 
-<img src="app/src/main/ic_launcher-web.png" width="192" height="192">
+This is an unofficial fork of [hazuki0x0/YuzuBrowser](https://github.com/hazuki0x0/YuzuBrowser), a lightweight and highly customizable Android browser that's been dormant since 2021.
 
-Yuzu browser is an open source power full web browser.
+The original project was stuck on ancient build tools and wouldn't compile on any modern Android setup.
 
-You can create your own browser using custom UI and custom buttons.
+## What changed
 
-This browser based on Mikan Browser.
+- AGP 4.1 → 8.4.2, Kotlin 1.4 → 2.0.21, Gradle 6.5 → 8.9
+- targetSdk bumped to 35 (Android 15)
+- jcenter replaced with mavenCentral
+- kapt replaced with KSP
+- Firebase/Crashlytics removed
+- Fixed app link handling on Android 11+
+
+## What's the same
+
+- All original features intact
+- Minimum Android version unchanged (Android 6.0+)
+- Same customization, adblock, userscripts, gestures, etc.
 
 ## Download and install
 **Android 6.0 or higher is required.**
+Prebuilt apk file is here
 
-<a href="https://play.google.com/store/apps/details?id=jp.hazuki.yuzubrowser">
-<img src="https://cloud.githubusercontent.com/assets/15681348/25552469/9d87214c-2cd5-11e7-8ada-6cf0c69df419.png" width="200px"></a>
-
-Or prebuilt apk file is here
-
-https://github.com/Hazuki0x0/YuzuBrowser/releases
+https://github.com/cincodemayo11/YuzuBrowser/releases
 
 ## Theme
 Yuzu Browser supports custom theme.
@@ -56,34 +60,22 @@ You should use new theme pack if you are using version 2.3 or later
 
 [Theme material light](https://github.com/Hazuki0x0/YuzuBrowser/releases/download/v1.1.0/yuzu_theme_material_light.zip)
 
-## Contributing
-Contributions are always welcome
-
-TL;DR
-- Create an issue (except for minor fixes and additional translations/translation fixes).
-- Create a branch for your patch.
-- Create a pull request on the dev branch.
-
-Details are in [Contributing.md](https://github.com/hazuki0x0/YuzuBrowser/blob/dev/Contributing.md)
-
-## Build
-
-    $ git clone https://github.com/Hazuki0x0/YuzuBrowser.git
-    $ cd YuzuBrowser
-    $ ./gradlew build
-
-
 ## License
-    Copyright (C) 2017-2021 Hazuki
+   ## License
+    Copyright (C) 2017-2024 Hazuki
+    Copyright (C) 2024 cincodemayo11 (modernization fork)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
-
         http://www.apache.org/licenses/LICENSE-2.0
-
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
+## Credits
+
+All credit for the original app goes to [hazuki0x0](https://github.com/hazuki0x0).
+
