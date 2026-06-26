@@ -21,25 +21,17 @@ The original project was stuck on ancient build tools and wouldn't compile on an
 
 ## Download and install
 **Android 6.0 or higher is required.**
-Prebuilt apk file is here
-
-https://github.com/cincodemayo11/YuzuBrowser/releases
+Prebuilt apk file is [here](https://github.com/cincodemayo11/YuzuBrowser/releases)
 
 ## Theme
-Yuzu Browser supports custom theme.
-
-You can create custom theme with [theme creator app](https://play.google.com/store/apps/details?id=jp.hazuki.yuzubrowser.themecreator).
-
-You can use it if you have the theme of Mikan Browser.
-
-However, as the theme has been expanded, not all displays change.
+Yuzu Browser supports custom themes.
 
 #### New theme pack sample
 for version 2.3 or later
 
 Just download the theme pack and tap it to import!
 
-You can unzip and edit this theme.
+You can unzip and edit this theme. The references are in the unzipped Readme.txt.
 
 [Theme material dark](https://github.com/hazuki0x0/YuzuBrowser/releases/download/v3.1.1/theme_material_dark.yuzutheme)
 (default theme)
