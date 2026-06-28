@@ -1,4 +1,10 @@
-v6.1 (2026)
+v6.1.1
+Patching
+
+Removed firebase/crashalytics code remnants
+Given the application a new appID (monaka.yuzubrowser) to better distinguish it from the original app
+
+v6.1.0 (2026)
 Modernization
 
 Migrated to AGP 8.4.2, Kotlin 2.0.21, Gradle 8.9
