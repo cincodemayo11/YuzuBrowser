@@ -44,11 +44,7 @@ buildscript {
         // gradle.properties instead of carrying the processor classpath here.
         // classpath 'com.android.tools.build.jetifier:jetifier-processor:1.0.0-beta10'  <-- removed
 
-        // CHANGED: google-services bumped 4.3.5 -> 4.4.2
-        //classpath 'com.google.gms:google-services:4.4.2'
 
-        // CHANGED: firebase-crashlytics-gradle bumped 2.5.0 -> 3.0.2
-        //classpath 'com.google.firebase:firebase-crashlytics-gradle:3.0.2'
 
         // ADDED: KSP plugin — required to replace kapt in app/build.gradle and submodules
         // Version must match your Kotlin version exactly (Kotlin 2.0.x -> KSP 2.0.x-1.0.xx)

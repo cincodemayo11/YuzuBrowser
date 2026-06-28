@@ -22,8 +22,6 @@ plugins {
     id 'kotlin-android'
     id 'com.google.devtools.ksp'
     id 'dagger.hilt.android.plugin'
-//    id 'com.google.gms.google-services'
-//    id 'com.google.firebase.crashlytics'
 }
 
 def gitHash = providers.exec {
@@ -41,7 +39,7 @@ android {
     namespace "jp.hazuki.yuzubrowser"
 
     defaultConfig {
-        applicationId "jp.hazuki.yuzubrowser.modern"
+        applicationId "monaka.yuzubrowser"
         minSdk Build.min_sdk_version
         targetSdk Build.target_sdk_version
         versionCode AppVersions.version_code
@@ -78,13 +76,11 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            //manifestPlaceholders = [crashlyticsCollectionEnabled: "true"]
             signingConfig signingConfigs.release
         }
         debug {
             applicationIdSuffix ".debug"
             resValue "string", "package_name", "${defaultConfig.applicationId}.debug"
-            manifestPlaceholders = [crashlyticsCollectionEnabled: "false"]
         }
     }
 
@@ -117,8 +113,6 @@ android {
     }
 }
 
-// CHANGED: removed the old google-services task disabling hack; this is handled
-// automatically by the google-services plugin in modern versions
 
 // CHANGED: removed per-module buildscript block (jcenter + Fabric); root build.gradle handles plugins
 repositories {
@@ -164,7 +158,4 @@ dependencies {
     ksp Dagger.hiltCompiler
 
     // CHANGED: bumped Firebase BOM from 26.5.0 to 33.x
-    //implementation platform('com.google.firebase:firebase-bom:33.1.2')
-    //implementation 'com.google.firebase:firebase-crashlytics-ktx'
-    //implementation 'com.google.firebase:firebase-analytics-ktx'
 }

@@ -26,6 +26,6 @@
       applicationId="com.android.colorpicker"
       generatedSourceFolders="build/generated/ap_generated_sources/release/out"
       generatedResourceFolders="build/generated/res/resValues/release"
-      desugaredMethodsFiles="/home/monaka/.gradle/caches/8.9/transforms/e4cd482b52a59004c3055b3509948b6f/transformed/D8BackportedDesugaredMethods.txt">
+      desugaredMethodsFiles="/home/monaka/.gradle/caches/8.9/transforms/b30d79e3f0f76cce25ce0d79b126faea/transformed/D8BackportedDesugaredMethods.txt">
   </artifact>
 </variant>

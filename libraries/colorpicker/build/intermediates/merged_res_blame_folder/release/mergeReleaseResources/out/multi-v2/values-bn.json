@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/home/monaka/.gradle/caches/8.9/transforms/8c91c1f583887282359ee0a32807abd3/transformed/core-1.13.0/res/values-bn/values-bn.xml",
+                    "source": "/home/monaka/.gradle/caches/8.9/transforms/7d54919cb8e70f9e46231613d0d61331/transformed/core-1.13.0/res/values-bn/values-bn.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "/home/monaka/.gradle/caches/8.9/transforms/1902d10025496df7bf343e40d9859f8c/transformed/appcompat-1.7.0/res/values-bn/values-bn.xml",
+                    "source": "/home/monaka/.gradle/caches/8.9/transforms/eba81a9ac015430399101dee1649e172/transformed/appcompat-1.7.0/res/values-bn/values-bn.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -77,7 +77,7 @@
                     }
                 },
                 {
-                    "source": "/home/monaka/.gradle/caches/8.9/transforms/8c91c1f583887282359ee0a32807abd3/transformed/core-1.13.0/res/values-bn/values-bn.xml",
+                    "source": "/home/monaka/.gradle/caches/8.9/transforms/7d54919cb8e70f9e46231613d0d61331/transformed/core-1.13.0/res/values-bn/values-bn.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -94,7 +94,7 @@
                     }
                 },
                 {
-                    "source": "/home/monaka/.gradle/caches/8.9/transforms/1902d10025496df7bf343e40d9859f8c/transformed/appcompat-1.7.0/res/values-bn/values-bn.xml",
+                    "source": "/home/monaka/.gradle/caches/8.9/transforms/eba81a9ac015430399101dee1649e172/transformed/appcompat-1.7.0/res/values-bn/values-bn.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
