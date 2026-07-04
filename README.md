@@ -6,7 +6,7 @@ NB: This app and the original Yuzu browser do not conflict and you can have them
 
 ## What changed
 
-- AGP 4.1 → 8.4.2, Kotlin 1.4 → 2.0.21, Gradle 6.5 → 8.9
+- AGP 4.1 -> 8.4.2, Kotlin 1.4 -> 2.0.21, Gradle 6.5 -> 8.9
 - targetSdk bumped to 35 (Android 15)
 - jcenter replaced with mavenCentral
 - kapt replaced with KSP
