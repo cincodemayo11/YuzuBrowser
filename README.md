@@ -12,6 +12,7 @@ NB: This app and the original Yuzu browser do not conflict and you can have them
 - kapt replaced with KSP
 - Firebase/Crashlytics removed
 - Fixed app link handling on Android 11+
+- Bug fixes and improvements
 
 ## What's the same
 
