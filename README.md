@@ -2,7 +2,7 @@
 
 This is an unofficial fork of [hazuki0x0/YuzuBrowser](https://github.com/hazuki0x0/YuzuBrowser), a lightweight and highly customizable Android browser that's been dormant since 2021.
 
-The original project was stuck on ancient build tools and wouldn't compile on any modern Android setup.
+NB: This app and the original Yuzu browser do not conflict and you can have them both installed in your phone simultaneously. You can keep them both until you feel this is stable enough to uninstall the unmaintained original.
 
 ## What changed
 
@@ -21,7 +21,12 @@ The original project was stuck on ancient build tools and wouldn't compile on an
 
 ## Download and install
 **Android 6.0 or higher is required.**
-Prebuilt apk file is [here](https://github.com/cincodemayo11/YuzuBrowser/releases)
+The latest prebuilt apk file is [here](https://github.com/cincodemayo11/YuzuBrowser/releases)
+
+## Importing data/gestures/bookmarks from original app
+
+- Go to old app's Settings->Import/Export and export bookmarks and backup settings from there
+- Go to this new app's Settings->Import/Export and import bookmarks and restore settings from there
 
 ## Theme
 Yuzu Browser supports custom themes.
