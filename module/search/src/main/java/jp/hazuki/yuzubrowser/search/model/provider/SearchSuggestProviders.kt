@@ -21,7 +21,17 @@ class SearchSuggestProviders(
     private var idCount: Int,
     val items: MutableList<SearchUrl>
 ) {
-    constructor(settings: SearchSettings) : this(settings.selectedId, settings.idCount, settings.items.toMutableList())
+
+
+	constructor(settings: SearchSettings) : this(settings.selectedId, settings.idCount, settings.items.toMutableList()) {
+		var maxId = idCount
+		items.forEach { 
+			if (it.id < 0) {
+				it.id = ++maxId
+			}
+		}
+		idCount = maxId
+	}
 
     val urls: List<SearchUrl> = items
 

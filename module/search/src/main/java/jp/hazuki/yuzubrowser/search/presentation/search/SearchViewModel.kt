@@ -55,10 +55,7 @@ internal class SearchViewModel @Inject constructor(
     val providerSelection = ObservableInt(-1)
 
     init {
-        providerSelection.addOnPropertyChangedCallback { _, _ ->
-            suggestProviders.selectedId = providerSelection.get()
-        }
-        useCase.suggestType = AppPrefs.searchSuggestType.get()
+	    useCase.suggestType = AppPrefs.searchSuggestType.get()
     }
 
     fun setQuery(query: String) {

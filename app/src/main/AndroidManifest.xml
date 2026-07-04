@@ -61,7 +61,7 @@
 
         <meta-data
             android:name="android.webkit.WebView.EnableSafeBrowsing"
-            android:value="true" />
+            android:value="false" />
         <!--<meta-data
         <meta-data
             android:name="google_analytics_adid_collection_enabled"

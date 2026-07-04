@@ -89,7 +89,8 @@ class SearchActivity : ThemeActivity(), SearchButton.Callback, SearchSuggestAdap
             barBinding.searchUrlSpinner.adapter = SearchUrlSpinnerAdapter(
                 this, it.suggestProviders.urls, faviconManager)
             it.providerSelection.set(it.suggestProviders.getSelectedIndex())
-        }
+    }
+
 
         if (!AppPrefs.searchUrlShowIcon.get()) {
             barBinding.searchUrlSpinner.visibility = View.GONE
@@ -297,12 +298,15 @@ class SearchActivity : ThemeActivity(), SearchButton.Callback, SearchSuggestAdap
     }
 
     private val callback = object : Observable.OnPropertyChangedCallback() {
-        override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
-            AppPrefs.search_url.set(viewModel.suggestProviders[viewModel.providerSelection.get()].url)
-            AppPrefs.commit(this@SearchActivity, AppPrefs.search_url)
-            viewModel.saveProvider()
-        }
+	    override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
+		    val index = viewModel.providerSelection.get()
+		    viewModel.suggestProviders.selectedId = viewModel.suggestProviders[index].id
+		    AppPrefs.search_url.set(viewModel.suggestProviders[index].url)
+		    AppPrefs.commit(this@SearchActivity, AppPrefs.search_url)
+		    viewModel.saveProvider()
+	    }
     }
+
 
     companion object {
         const val EXTRA_QUERY = "jp.hazuki.yuzubrowser.legacy.search.SearchActivity.extra.query"

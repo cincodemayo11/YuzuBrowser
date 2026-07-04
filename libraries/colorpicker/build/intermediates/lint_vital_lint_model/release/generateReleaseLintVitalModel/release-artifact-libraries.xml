@@ -1,9 +1,9 @@
 <libraries>
   <library
       name="androidx.appcompat:appcompat-resources:1.7.0@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/d0ab664a26a41842ab2f62f36440838b/transformed/appcompat-resources-1.7.0/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/3159049b7b645bf7134af40573c426c8/transformed/appcompat-resources-1.7.0/jars/classes.jar"
       resolved="androidx.appcompat:appcompat-resources:1.7.0"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/d0ab664a26a41842ab2f62f36440838b/transformed/appcompat-resources-1.7.0"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/3159049b7b645bf7134af40573c426c8/transformed/appcompat-resources-1.7.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -14,9 +14,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.appcompat:appcompat:1.7.0@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/eba81a9ac015430399101dee1649e172/transformed/appcompat-1.7.0/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/d7dd72e01b10f186721b7484999a2a8f/transformed/appcompat-1.7.0/jars/classes.jar"
       resolved="androidx.appcompat:appcompat:1.7.0"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/eba81a9ac015430399101dee1649e172/transformed/appcompat-1.7.0"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/d7dd72e01b10f186721b7484999a2a8f/transformed/appcompat-1.7.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -27,9 +27,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.fragment:fragment:1.5.4@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/4c9b39118378587521663a8c2e863d84/transformed/fragment-1.5.4/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/0502168094eabfa163752e36b17fec87/transformed/fragment-1.5.4/jars/classes.jar"
       resolved="androidx.fragment:fragment:1.5.4"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/4c9b39118378587521663a8c2e863d84/transformed/fragment-1.5.4"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/0502168094eabfa163752e36b17fec87/transformed/fragment-1.5.4"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -40,9 +40,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.activity:activity:1.7.0@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/b75ef771d8ee54987309dc75bebbfa8a/transformed/activity-1.7.0/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/e1b47dc12b13843e89410530c4aecda7/transformed/activity-1.7.0/jars/classes.jar"
       resolved="androidx.activity:activity:1.7.0"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/b75ef771d8ee54987309dc75bebbfa8a/transformed/activity-1.7.0"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/e1b47dc12b13843e89410530c4aecda7/transformed/activity-1.7.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -53,9 +53,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.drawerlayout:drawerlayout:1.0.0@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/c59a805ad5057ebe24a1fb5f50a8e219/transformed/drawerlayout-1.0.0/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/50d926bacb3fb558268f5dbdd4dc20f0/transformed/drawerlayout-1.0.0/jars/classes.jar"
       resolved="androidx.drawerlayout:drawerlayout:1.0.0"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/c59a805ad5057ebe24a1fb5f50a8e219/transformed/drawerlayout-1.0.0"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/50d926bacb3fb558268f5dbdd4dc20f0/transformed/drawerlayout-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -66,9 +66,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.vectordrawable:vectordrawable-animated:1.1.0@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/ec501988817e10bd85c2545d3b11183f/transformed/vectordrawable-animated-1.1.0/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/f8491eb3259861970cdf2d72010eaf76/transformed/vectordrawable-animated-1.1.0/jars/classes.jar"
       resolved="androidx.vectordrawable:vectordrawable-animated:1.1.0"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/ec501988817e10bd85c2545d3b11183f/transformed/vectordrawable-animated-1.1.0"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/f8491eb3259861970cdf2d72010eaf76/transformed/vectordrawable-animated-1.1.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -79,9 +79,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.vectordrawable:vectordrawable:1.1.0@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/71436158a10325cf67317fd0696c3ff3/transformed/vectordrawable-1.1.0/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/272413fbe6629e357d95ddaa2b80cd18/transformed/vectordrawable-1.1.0/jars/classes.jar"
       resolved="androidx.vectordrawable:vectordrawable:1.1.0"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/71436158a10325cf67317fd0696c3ff3/transformed/vectordrawable-1.1.0"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/272413fbe6629e357d95ddaa2b80cd18/transformed/vectordrawable-1.1.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -92,9 +92,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.viewpager:viewpager:1.0.0@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/03e4e867d903c32d5a4a4a91592112dd/transformed/viewpager-1.0.0/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/9ace1812d2db3530662ba2cf467d7287/transformed/viewpager-1.0.0/jars/classes.jar"
       resolved="androidx.viewpager:viewpager:1.0.0"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/03e4e867d903c32d5a4a4a91592112dd/transformed/viewpager-1.0.0"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/9ace1812d2db3530662ba2cf467d7287/transformed/viewpager-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -105,9 +105,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.customview:customview:1.0.0@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/c62ecb9e5e18c97dc222d23334674c21/transformed/customview-1.0.0/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/0ab32e07ea47aee7d2e119e9836a2c7c/transformed/customview-1.0.0/jars/classes.jar"
       resolved="androidx.customview:customview:1.0.0"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/c62ecb9e5e18c97dc222d23334674c21/transformed/customview-1.0.0"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/0ab32e07ea47aee7d2e119e9836a2c7c/transformed/customview-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -118,9 +118,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.loader:loader:1.0.0@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/a7bb7ebc78a1ec8cab4c161e799bec89/transformed/loader-1.0.0/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/24c42b0a0ad97332fc07f76a92cb6d40/transformed/loader-1.0.0/jars/classes.jar"
       resolved="androidx.loader:loader:1.0.0"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/a7bb7ebc78a1ec8cab4c161e799bec89/transformed/loader-1.0.0"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/24c42b0a0ad97332fc07f76a92cb6d40/transformed/loader-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -131,9 +131,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.lifecycle:lifecycle-livedata:2.6.2@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/7de8269fcecf2a3d46ac6e2acb3e2d6a/transformed/lifecycle-livedata-2.6.2/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/d82170b4672f88924f5efed18b34c363/transformed/lifecycle-livedata-2.6.2/jars/classes.jar"
       resolved="androidx.lifecycle:lifecycle-livedata:2.6.2"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/7de8269fcecf2a3d46ac6e2acb3e2d6a/transformed/lifecycle-livedata-2.6.2"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/d82170b4672f88924f5efed18b34c363/transformed/lifecycle-livedata-2.6.2"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -148,9 +148,9 @@
       resolved="androidx.lifecycle:lifecycle-common:2.6.2"/>
   <library
       name="androidx.lifecycle:lifecycle-livedata-core:2.6.2@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/e8e8877905aabd8f0aa0139762715fd4/transformed/lifecycle-livedata-core-2.6.2/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/509b7abccfbdf4a652c5eac6a5140105/transformed/lifecycle-livedata-core-2.6.2/jars/classes.jar"
       resolved="androidx.lifecycle:lifecycle-livedata-core:2.6.2"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/e8e8877905aabd8f0aa0139762715fd4/transformed/lifecycle-livedata-core-2.6.2"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/509b7abccfbdf4a652c5eac6a5140105/transformed/lifecycle-livedata-core-2.6.2"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -161,9 +161,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.lifecycle:lifecycle-viewmodel:2.6.2@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/7419de4dcd33da5b78d60c63a3dfa0ed/transformed/lifecycle-viewmodel-2.6.2/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/80c3f5014cbf335a07bdb768840aab71/transformed/lifecycle-viewmodel-2.6.2/jars/classes.jar"
       resolved="androidx.lifecycle:lifecycle-viewmodel:2.6.2"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/7419de4dcd33da5b78d60c63a3dfa0ed/transformed/lifecycle-viewmodel-2.6.2"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/80c3f5014cbf335a07bdb768840aab71/transformed/lifecycle-viewmodel-2.6.2"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -174,9 +174,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.lifecycle:lifecycle-runtime:2.6.2@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/bfa264f4f3005d193a85213051f72539/transformed/lifecycle-runtime-2.6.2/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/d9f6b420958e9ef0a26b7b69668e707a/transformed/lifecycle-runtime-2.6.2/jars/classes.jar"
       resolved="androidx.lifecycle:lifecycle-runtime:2.6.2"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/bfa264f4f3005d193a85213051f72539/transformed/lifecycle-runtime-2.6.2"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/d9f6b420958e9ef0a26b7b69668e707a/transformed/lifecycle-runtime-2.6.2"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -187,9 +187,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/12b5661a875d3ce2d476fbe29a4ef42f/transformed/lifecycle-viewmodel-savedstate-2.6.2/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/7269f92369c2ce0466049ee05f2447ab/transformed/lifecycle-viewmodel-savedstate-2.6.2/jars/classes.jar"
       resolved="androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/12b5661a875d3ce2d476fbe29a4ef42f/transformed/lifecycle-viewmodel-savedstate-2.6.2"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/7269f92369c2ce0466049ee05f2447ab/transformed/lifecycle-viewmodel-savedstate-2.6.2"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -200,9 +200,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.core:core-ktx:1.13.0@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/7318f8eecb5bd9fab3d6249a57d79849/transformed/core-ktx-1.13.0/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/ae432d1a968dbb5e25263f8eb974b944/transformed/core-ktx-1.13.0/jars/classes.jar"
       resolved="androidx.core:core-ktx:1.13.0"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/7318f8eecb5bd9fab3d6249a57d79849/transformed/core-ktx-1.13.0"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/ae432d1a968dbb5e25263f8eb974b944/transformed/core-ktx-1.13.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -213,9 +213,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.core:core:1.13.0@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/7d54919cb8e70f9e46231613d0d61331/transformed/core-1.13.0/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/516e2ae9a6c9ca2ec2ab0b501bbfd6b5/transformed/core-1.13.0/jars/classes.jar"
       resolved="androidx.core:core:1.13.0"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/7d54919cb8e70f9e46231613d0d61331/transformed/core-1.13.0"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/516e2ae9a6c9ca2ec2ab0b501bbfd6b5/transformed/core-1.13.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -226,9 +226,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.cursoradapter:cursoradapter:1.0.0@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/79415632e71a6d0c5f6f9a96a6593a18/transformed/cursoradapter-1.0.0/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/a6cced01716cd5e9f259f43a05f42b2d/transformed/cursoradapter-1.0.0/jars/classes.jar"
       resolved="androidx.cursoradapter:cursoradapter:1.0.0"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/79415632e71a6d0c5f6f9a96a6593a18/transformed/cursoradapter-1.0.0"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/a6cced01716cd5e9f259f43a05f42b2d/transformed/cursoradapter-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -239,9 +239,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.savedstate:savedstate:1.2.1@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/859fc695a14837b074f9a55acde1d1f3/transformed/savedstate-1.2.1/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/7c22a8abbc2faedfdf017423ef947e33/transformed/savedstate-1.2.1/jars/classes.jar"
       resolved="androidx.savedstate:savedstate:1.2.1"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/859fc695a14837b074f9a55acde1d1f3/transformed/savedstate-1.2.1"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/7c22a8abbc2faedfdf017423ef947e33/transformed/savedstate-1.2.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -252,9 +252,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.versionedparcelable:versionedparcelable:1.1.1@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/8c75a4315ce248a1fee30d27905a3a7a/transformed/versionedparcelable-1.1.1/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/73fb25b08486d430fc0000e58702d32c/transformed/versionedparcelable-1.1.1/jars/classes.jar"
       resolved="androidx.versionedparcelable:versionedparcelable:1.1.1"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/8c75a4315ce248a1fee30d27905a3a7a/transformed/versionedparcelable-1.1.1"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/73fb25b08486d430fc0000e58702d32c/transformed/versionedparcelable-1.1.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -269,9 +269,9 @@
       resolved="androidx.collection:collection:1.1.0"/>
   <library
       name="androidx.interpolator:interpolator:1.0.0@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/23ada318209e8c0f95fca1b77859c250/transformed/interpolator-1.0.0/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/a63d8aef2b0ad09ace98eab2bd95f054/transformed/interpolator-1.0.0/jars/classes.jar"
       resolved="androidx.interpolator:interpolator:1.0.0"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/23ada318209e8c0f95fca1b77859c250/transformed/interpolator-1.0.0"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/a63d8aef2b0ad09ace98eab2bd95f054/transformed/interpolator-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -282,9 +282,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.arch.core:core-runtime:2.2.0@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/2dd2e694afac1c93ac5268cdfc2c4a43/transformed/core-runtime-2.2.0/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/107a0ec3282d38cecf1cfa31967641d2/transformed/core-runtime-2.2.0/jars/classes.jar"
       resolved="androidx.arch.core:core-runtime:2.2.0"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/2dd2e694afac1c93ac5268cdfc2c4a43/transformed/core-runtime-2.2.0"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/107a0ec3282d38cecf1cfa31967641d2/transformed/core-runtime-2.2.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -303,9 +303,9 @@
       resolved="androidx.annotation:annotation-jvm:1.6.0"/>
   <library
       name="androidx.annotation:annotation-experimental:1.4.0@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/959ac56e6a566b09beb3c1ff7cf0224c/transformed/annotation-experimental-1.4.0/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/82d2b313540e048c144faeb5ba2439af/transformed/annotation-experimental-1.4.0/jars/classes.jar"
       resolved="androidx.annotation:annotation-experimental:1.4.0"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/959ac56e6a566b09beb3c1ff7cf0224c/transformed/annotation-experimental-1.4.0"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/82d2b313540e048c144faeb5ba2439af/transformed/annotation-experimental-1.4.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -344,9 +344,9 @@
       resolved="org.jetbrains:annotations:13.0"/>
   <library
       name="androidx.emoji2:emoji2-views-helper:1.3.0@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/cceea2d149d741cecff5650df49e2faf/transformed/emoji2-views-helper-1.3.0/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/1442c96a4cdc958d7750346aee8c28b7/transformed/emoji2-views-helper-1.3.0/jars/classes.jar"
       resolved="androidx.emoji2:emoji2-views-helper:1.3.0"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/cceea2d149d741cecff5650df49e2faf/transformed/emoji2-views-helper-1.3.0"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/1442c96a4cdc958d7750346aee8c28b7/transformed/emoji2-views-helper-1.3.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -357,9 +357,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.emoji2:emoji2:1.3.0@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/d93bdda21e5bbf76c0d53a46abace4c6/transformed/emoji2-1.3.0/jars/classes.jar:/home/monaka/.gradle/caches/8.9/transforms/d93bdda21e5bbf76c0d53a46abace4c6/transformed/emoji2-1.3.0/jars/libs/repackaged.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/b6d7c8662b97fcf41a2a363f3171fcf3/transformed/emoji2-1.3.0/jars/classes.jar:/home/monaka/.gradle/caches/8.9/transforms/b6d7c8662b97fcf41a2a363f3171fcf3/transformed/emoji2-1.3.0/jars/libs/repackaged.jar"
       resolved="androidx.emoji2:emoji2:1.3.0"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/d93bdda21e5bbf76c0d53a46abace4c6/transformed/emoji2-1.3.0"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/b6d7c8662b97fcf41a2a363f3171fcf3/transformed/emoji2-1.3.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -370,9 +370,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.lifecycle:lifecycle-process:2.6.2@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/11182a3025c95886af7b0851fdbe920e/transformed/lifecycle-process-2.6.2/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/eedaab0e1a2f685990841c54bfc931ba/transformed/lifecycle-process-2.6.2/jars/classes.jar"
       resolved="androidx.lifecycle:lifecycle-process:2.6.2"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/11182a3025c95886af7b0851fdbe920e/transformed/lifecycle-process-2.6.2"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/eedaab0e1a2f685990841c54bfc931ba/transformed/lifecycle-process-2.6.2"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -383,9 +383,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.profileinstaller:profileinstaller:1.3.1@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/f5490e4d276bcc9865af41c6e81e33ed/transformed/profileinstaller-1.3.1/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/78877e6d27fbcc20c69a3d32909c7cef/transformed/profileinstaller-1.3.1/jars/classes.jar"
       resolved="androidx.profileinstaller:profileinstaller:1.3.1"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/f5490e4d276bcc9865af41c6e81e33ed/transformed/profileinstaller-1.3.1"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/78877e6d27fbcc20c69a3d32909c7cef/transformed/profileinstaller-1.3.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -400,9 +400,9 @@
       resolved="androidx.resourceinspection:resourceinspection-annotation:1.0.1"/>
   <library
       name="androidx.startup:startup-runtime:1.1.1@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/3c5cedfff570c651e7045c4d04523abe/transformed/startup-runtime-1.1.1/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/2e5bb736e39d5657fa81d60bb41d5a48/transformed/startup-runtime-1.1.1/jars/classes.jar"
       resolved="androidx.startup:startup-runtime:1.1.1"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/3c5cedfff570c651e7045c4d04523abe/transformed/startup-runtime-1.1.1"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/2e5bb736e39d5657fa81d60bb41d5a48/transformed/startup-runtime-1.1.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -413,9 +413,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.tracing:tracing:1.0.0@aar"
-      jars="/home/monaka/.gradle/caches/8.9/transforms/91312c7868d1abdf785f7f78a96175bd/transformed/tracing-1.0.0/jars/classes.jar"
+      jars="/home/monaka/.gradle/caches/8.9/transforms/bf0046b5e03a785c4a5a7bc9047a61ef/transformed/tracing-1.0.0/jars/classes.jar"
       resolved="androidx.tracing:tracing:1.0.0"
-      folder="/home/monaka/.gradle/caches/8.9/transforms/91312c7868d1abdf785f7f78a96175bd/transformed/tracing-1.0.0"
+      folder="/home/monaka/.gradle/caches/8.9/transforms/bf0046b5e03a785c4a5a7bc9047a61ef/transformed/tracing-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

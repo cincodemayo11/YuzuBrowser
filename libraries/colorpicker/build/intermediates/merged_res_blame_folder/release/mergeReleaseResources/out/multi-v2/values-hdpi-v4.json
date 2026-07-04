@@ -4,7 +4,7 @@
             "outputFile": "com.android.colorpicker-release-22:/values-hdpi-v4/values-hdpi-v4.xml",
             "map": [
                 {
-                    "source": "/home/monaka/.gradle/caches/8.9/transforms/eba81a9ac015430399101dee1649e172/transformed/appcompat-1.7.0/res/values-hdpi-v4/values-hdpi-v4.xml",
+                    "source": "/home/monaka/.gradle/caches/8.9/transforms/d7dd72e01b10f186721b7484999a2a8f/transformed/appcompat-1.7.0/res/values-hdpi-v4/values-hdpi-v4.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -20,7 +20,7 @@
             "outputFile": "com.android.colorpicker-mergeReleaseResources-20:/values-hdpi-v4/values-hdpi-v4.xml",
             "map": [
                 {
-                    "source": "/home/monaka/.gradle/caches/8.9/transforms/eba81a9ac015430399101dee1649e172/transformed/appcompat-1.7.0/res/values-hdpi-v4/values-hdpi-v4.xml",
+                    "source": "/home/monaka/.gradle/caches/8.9/transforms/d7dd72e01b10f186721b7484999a2a8f/transformed/appcompat-1.7.0/res/values-hdpi-v4/values-hdpi-v4.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
